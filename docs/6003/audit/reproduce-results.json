@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-31T08:00:00.000Z",
+  "results": [
+    {
+      "case": "同一业务问题跨规则命中",
+      "expectedProblems": 1,
+      "actualProblems": 2,
+      "alerts": 1
+    },
+    {
+      "case": "风险分布应等于未关闭告警",
+      "open": 33,
+      "closed": 4,
+      "actualDistribution": 37
+    },
+    {
+      "case": "依赖终点的服务中范围应在结束后判断",
+      "expectedProblems": 0,
+      "actualProblems": 1,
+      "callEnded": false
+    },
+    {
+      "case": "删除或改名后失效的意图触发项应阻止保存",
+      "originalFeatures": [
+        "查询转账进度",
+        "办理挂失"
+      ],
+      "saveAccepted": true,
+      "remainingFeatures": [
+        "查询转账进度",
+        "办理挂失"
+      ]
+    },
+    {
+      "case": "隐藏的累计次数字段不应阻塞单次条件",
+      "mode": "单次命中",
+      "rejectedByHiddenField": true,
+      "error": "次数须为 1–1000 的整数"
+    },
+    {
+      "case": "策略降级后保留命中时等级与策略事实",
+      "before": "high",
+      "after": "low",
+      "basisKeys": [
+        "ruleId",
+        "ruleName",
+        "resource",
+        "capturedAt"
+      ],
+      "workflow": {
+        "flowId": "default",
+        "policyName": "高风险通知"
+      },
+      "alertKeys": [
+        "id",
+        "rev",
+        "callId",
+        "problemIds",
+        "level",
+        "status",
+        "createdAt",
+        "completed",
+        "history"
+      ]
+    },
+    {
+      "case": "已办结问题新证据应产生主管确认入口",
+      "status": "closed",
+      "evidence": [
+        0,
+        1
+      ],
+      "latestLog": "确认误报并归档",
+      "workflow": {
+        "flowId": "default",
+        "policyName": "高风险通知"
+      }
+    },
+    {
+      "case": "重检再次命中应显示最新批次命中记录",
+      "problems": 1,
+      "ruleCount": 0,
+      "indicatorCount": 0,
+      "latestBatch": "B-3-2",
+      "findingBatch": "B-audit"
+    },
+    {
+      "case": "预警降级不应改写申诉核查期限",
+      "review": "WO-AP-UI-7",
+      "type": "appeal",
+      "before": "2026-11-02T08:00:00.000Z",
+      "after": "2026-10-31T03:05:47.000Z"
+    },
+    {
+      "case": "特殊流程失效回默认时应通知主管",
+      "flow": {
+        "flowId": "default",
+        "policyName": "高风险通知",
+        "reason": "指定流程失效或无接收人，回到默认流程"
+      },
+      "notificationRecipients": [
+        "A1048"
+      ]
+    }
+  ]
+}

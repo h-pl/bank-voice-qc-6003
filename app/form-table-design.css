@@ -1,0 +1,43 @@
+/* Shared data-table contract for pages and dialogs. Heatmaps retain their visual encoding. */
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table){
+ border:0;border-collapse:separate;border-spacing:0;
+}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table) :is(thead,tbody,tr,th,td){border:0}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table) thead th{
+ background:var(--surface-subtle);color:var(--muted);font-weight:500;
+}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table) thead th:first-child{border-radius:6px 0 0 0}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table) thead th:last-child{border-radius:0 6px 0 0}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table) tbody .resource-row-number{
+ background:var(--surface);color:var(--muted);
+}
+:root body :is(.resource-record-table,[data-slot=table]):not(.qa-matrix,.resource-table,.call-table):not(.resource-edit-table) tbody tr+tr>:is(th,td){
+ border-top:1px solid var(--divider-subtle);
+}
+.modal[data-slot=dialog-content] :is(.resource-grid-scroll,.hotword-preview-list,.structured-resource-table,[data-slot=table-container]){border:0}
+:is(.strategy-redesign,.modal[data-slot=dialog-content]) .binding-read-compact{gap:0}
+:is(.strategy-redesign,.modal[data-slot=dialog-content]) .binding-read-compact .binding-read-head{
+ background:var(--surface-subtle);padding:12px 16px;border:0;border-radius:6px 6px 0 0;
+}
+:is(.strategy-redesign,.modal[data-slot=dialog-content]) .binding-read-compact .binding-read-row{border:0;border-radius:0}
+:is(.strategy-redesign,.modal[data-slot=dialog-content]) .binding-read-compact .binding-read-row+.binding-read-row{border-top:1px solid var(--divider-subtle)}
+@media(max-width:600px){
+ :root body .resource-read-pair .resource-record-table:not(.resource-edit-table) tbody tr+tr>:is(th,td){border:0}
+ :root body .resource-read-pair .resource-record-table:not(.resource-edit-table) tbody tr+tr{border-top:1px solid var(--divider-subtle)}
+}
+
+
+/* ARIA tables follow the same headings and between-record separators. */
+.shared-policy-reference-table .shared-policy-reference-head{background:var(--surface-subtle);border:0;border-radius:6px 6px 0 0;color:var(--muted);font-weight:500}
+.shared-policy-reference-table .shared-policy-reference-row{border:0}
+.shared-policy-reference-table .shared-policy-reference-row:not(.shared-policy-reference-head)+.shared-policy-reference-row{border-top:1px solid var(--divider-subtle)}
+/* Normal forms group fields with space; input and selection affordances keep their borders. */
+.action-dialog :is(.shared-policy-editor,.indicator-association-editor) .editor-reason,
+.action-dialog .indicator-association-editor label:has(textarea),
+.action-dialog .new-policy-scope{border-top:0}
+.action-dialog .policy-association-form .association-rule-group{border:0;border-radius:0;padding-inline:0}
+.action-dialog .policy-association-form .association-rule-choice+.association-rule-choice{border-top:0}
+/* Compact policy summaries need a distinct gap after the data table. */
+.binding-read-compact>.warning-shared-policies{margin-top:24px}
+
+/* Resource/call main lists retain their original borderless styles in catalog-report-design.css. */

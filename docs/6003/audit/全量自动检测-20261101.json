@@ -1,0 +1,14 @@
+{
+  "document_id": "ZJP3dDgxpoV4PVxbkJfc8h5fnAf",
+  "revision_id": 226,
+  "updated_and_verified_blocks": 7,
+  "remaining_obsolete_terms": [],
+  "tests_passed": 232,
+  "typecheck": "passed",
+  "lint": "passed",
+  "build": "passed",
+  "browser": {
+    "rules_and_policies_settings_removed": true,
+    "display_settings_save_reload": true
+  }
+}

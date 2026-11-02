@@ -1,0 +1,41 @@
+临时副本，仅执行 6003 专项测试。基线 exit=0；反转检测成功关闭条件后 exit=1。
+✔ 6003: twelve indicators, resources and rules are one-to-one; configuration exposes direct operations (11.172708ms)
+✔ 6003: disabled indicator is excluded from subsequent batches, in-flight basis retained (11.563ms)
+✔ 6003: resource update is atomic, rejects stale/invalid writes, retains captured evidence (9.333042ms)
+✔ 6003: exclusive strategy ownership, shared strategy, deletion falls back to defaults (8.794ms)
+✔ 6003: repeated callbacks and evidence append create one problem; three risks do not compound or reroute (9.702542ms)
+✔ 6003: special workflow assigns a real review; invalid route falls back with reason (8.938291ms)
+✔ 6003: dynamic level decreases and increases without extending existing deadlines (8.697416ms)
+✖ 6003: partial closure, detection barrier, complete closure and new-problem reopen keep alert identity (10.591792ms)
+✔ 6003: report alert totals reconcile with live aggregation while issues retain independent counts (7.911292ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 173.21775
+
+✖ failing tests:
+
+test at ../../../../../../../private/var/folders/1b/nq0mcf7d34952yr0mpx3_scc0000gn/T/6003-review-mutation-hl03an9g/scripts/6003.test.mjs:47:1
+✖ 6003: partial closure, detection barrier, complete closure and new-problem reopen keep alert identity (10.591792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'closed' !== 'open'
+  
+      at TestContext.<anonymous> (file:///private/var/folders/1b/nq0mcf7d34952yr0mpx3_scc0000gn/T/6003-review-mutation-hl03an9g/scripts/6003.test.mjs:50:103)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'closed',
+    expected: 'open',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

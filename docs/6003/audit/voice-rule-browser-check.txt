@@ -1,0 +1,95 @@
+async (page) => {
+  const context = await page.context().browser().newContext({viewport:{width:1280,height:720}});
+  const p = await context.newPage();
+  const checks = [];
+  const assert = (ok, label) => { if (!ok) throw new Error(label); checks.push(label); };
+  const button = name => p.getByRole('button',{name,exact:true});
+  const check = name => p.getByRole('checkbox',{name,exact:true});
+  const field = name => p.getByRole('spinbutton',{name,exact:true});
+  const select = async (name,value) => {await p.getByRole('combobox',{name,exact:true}).click();await p.getByRole('option',{name:value,exact:true}).click();};
+  try {
+    await p.goto('http://localhost:6003/?view=rules');
+    await button('编辑规则').click();
+    assert(await check('身份不匹配').isChecked(),'已有条件默认启用正确');
+    assert(await button('保存规则').isDisabled(),'无修改禁止保存');
+    const base = await p.getByRole('dialog').boundingBox();
+    await select('身份不匹配 检测阶段','开场');
+    await select('身份不匹配 触发方式','累计次数');
+    await field('身份不匹配 累计').fill('2');
+    await field('身份不匹配 统计窗口').fill('60');
+    assert((await p.getByRole('dialog').boundingBox()).height===base.height,'条件显隐保持弹窗高度');
+    await check('身份不匹配').uncheck();
+    assert(await field('身份不匹配 累计').isDisabled(),'取消勾选禁用所属参数');
+    await check('身份不匹配').check();
+    assert(await field('身份不匹配 累计').inputValue()==='2','重新勾选恢复原值');
+    await select('身份不匹配 触发方式','单次命中');
+    await select('身份不匹配 触发方式','累计次数');
+    assert(await field('身份不匹配 统计窗口').inputValue()==='60','切换触发方式保留参数');
+    await field('身份不匹配 累计').fill('');
+    await button('保存规则').click();
+    assert(await field('身份不匹配 累计').inputValue()==='' && await field('身份不匹配 累计').evaluate(n=>n===document.activeElement),'空值保持为空并聚焦错误');
+    await field('身份不匹配 累计').fill('2.5');
+    await button('保存规则').click();
+    assert(await field('身份不匹配 累计').getAttribute('aria-invalid')==='true','小数校验');
+    await field('身份不匹配 累计').fill('1001');
+    await button('保存规则').click();
+    assert(await field('身份不匹配 累计').getAttribute('aria-invalid')==='true','越界校验');
+    await field('身份不匹配 累计').fill('2');
+    for(const name of ['身份不匹配','未注册声纹','无法确认身份']) await check(name).uncheck();
+    await button('保存规则').click();
+    assert(await p.getByText('请至少选择一项检测条件',{exact:true}).isVisible(),'全部取消校验');
+    await button('取消').click();
+    await button('编辑规则').click();
+    assert(await check('身份不匹配').isChecked() && await p.getByRole('combobox',{name:'身份不匹配 触发方式',exact:true}).innerText()==='单次命中','取消后重开恢复已保存值');
+    await select('身份不匹配 触发方式','累计次数');
+    await field('身份不匹配 累计').fill('3');
+    await button('关闭弹窗').click();
+    assert(await button('继续编辑').isVisible(),'关闭未保存配置出现放弃确认');
+    await button('继续编辑').click();
+    assert(await field('身份不匹配 累计').inputValue()==='3','继续编辑保留输入');
+    await p.evaluate(()=>{window.__voiceOriginalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new Error('quota simulation');};});
+    await button('保存规则').click();
+    assert(await p.getByText('保存失败，请释放浏览器存储空间后重试；输入内容已保留。',{exact:true}).isVisible(),'存储失败提示且保留弹窗');
+    assert(await field('身份不匹配 累计').inputValue()==='3','保存失败保留输入');
+    await p.evaluate(()=>{Storage.prototype.setItem=window.__voiceOriginalSetItem;delete window.__voiceOriginalSetItem;});
+    await button('保存规则').click();
+    await p.getByRole('dialog').waitFor({state:'hidden'});
+    await button('编辑规则').click();
+    assert(await field('身份不匹配 累计').inputValue()==='3','保存后重开恢复新值');
+    await button('取消').click();
+    await p.reload();
+    await button('编辑规则').click();
+    assert(await field('身份不匹配 累计').inputValue()==='3','刷新后配置持久化');
+    for(const name of ['身份不匹配','未注册声纹','无法确认身份']) {
+      await select(`${name} 检测阶段`,'服务中');
+      await select(`${name} 触发方式`,'累计次数');
+    }
+    const geometry=await p.locator('.voice-rule-editor').evaluate(form=>{
+      const body=form.querySelector('.resource-dialog-body'), footer=form.querySelector('.resource-dialog-footer');
+      body.scrollTop=body.scrollHeight;
+      const input=form.querySelector('input[name="rule-change-note"]').getBoundingClientRect();
+      return {scrolls:body.scrollHeight>body.clientHeight,horizontal:body.scrollWidth>body.clientWidth,footer:footer.getBoundingClientRect().bottom,lastBottom:input.bottom,bodyBottom:body.getBoundingClientRect().bottom};
+    });
+    assert(geometry.scrolls&&!geometry.horizontal&&geometry.footer<=720&&geometry.lastBottom<=geometry.bodyBottom,'1280桌面正文独立滚动且末项页脚可达');
+    assert((await p.getByRole('dialog').boundingBox()).height===base.height,'复杂三行配置保持外框稳定');
+    await p.screenshot({path:'/Users/hpl/Documents/ChatGPT/质检-ui-6001/projects/bank-voice-qc-6003/docs/6003/evidence/voice-rule-expanded-20261101.png',animations:'disabled'});
+    await button('取消').click();
+    await button('编辑规则').click();
+    await select('身份不匹配 触发方式','单次命中');
+    await button('保存规则').click();
+    await p.getByRole('dialog').waitFor({state:'hidden'});
+    await p.setViewportSize({width:1728,height:958});
+    await button('编辑规则').click();
+    await p.screenshot({path:'/Users/hpl/Documents/ChatGPT/质检-ui-6001/projects/bank-voice-qc-6003/docs/6003/evidence/voice-rule-compact-20261101.png',animations:'disabled'});
+    const aligned=await p.locator('.voice-conditions-table tbody tr').evaluateAll(rows=>rows.every(row=>{
+      const a=row.querySelector('.voice-condition-choice').getBoundingClientRect(),b=row.querySelector('[role="combobox"]').getBoundingClientRect();
+      return Math.abs((a.top+a.height/2)-(b.top+b.height/2))<2;
+    }));
+    assert(aligned,'复选框与下拉中心线对齐');
+    await button('取消').click();
+    await button('编辑规则').waitFor({state:'visible'});
+    await p.waitForTimeout(100);
+    assert(await button('编辑规则').evaluate(n=>n===document.activeElement),'关闭后焦点返回编辑入口');
+    return {checks, geometry};
+  } finally { await context.close(); }
+}

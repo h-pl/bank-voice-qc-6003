@@ -1,0 +1,13 @@
+检测条件归属修正：217/217 测试通过，typecheck、ESLint、隔离生产构建通过。
+新增验证：规则条件独立保存、资源接口拒绝条件写入、资源更新不改规则、旧缓存迁移幂等、历史快照阈值保留。
+浏览器：资源查看只展示业务内容，编辑复用 6001 表格及底部添加/取消/保存；指标规则入口继续显示原条件。
+5ms)
+✔ Appeal submitted review becomes completed after substantive adjudication; new adverse sequence can appeal (3.101917ms)
+ℹ tests 217
+ℹ suites 0
+ℹ pass 217
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1020.707209

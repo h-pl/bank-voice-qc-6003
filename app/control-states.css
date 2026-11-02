@@ -1,0 +1,100 @@
+/* Shared shadcn field states. Page styles own widths and density, never focus/validation. */
+:root {
+  --control-border: var(--line);
+  --control-hover-border: #a4abb4;
+  --control-focus-border: var(--orange);
+  --control-focus-ring: 0 0 0 3px rgb(244 123 52 / 20%);
+  --control-error-border: var(--red);
+  --control-error-ring: 0 0 0 3px rgb(189 48 56 / 16%);
+  --control-disabled-bg: #fafafa;
+  --control-disabled-ink: #9a9fa7;
+}
+:root body [data-control-surface][data-slot] {
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--control-border);
+  border-radius: 7px;
+  box-shadow: none;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+/* Keep hover guards at zero specificity so focus and validation colors win. */
+:root body [data-control-surface][data-slot]:hover:where(:not(:disabled,[data-disabled],[readonly],:has(input:disabled,textarea:disabled))) {
+  border-color: var(--control-hover-border);
+}
+:root body [data-control-surface][data-slot]:is(:focus-visible,:focus-within,[data-state="open"]) {
+  border-color: var(--control-focus-border);
+  box-shadow: var(--control-focus-ring);
+  outline: none;
+}
+:root body [data-control-surface][data-slot]:is([aria-invalid="true"],:user-invalid,:has([aria-invalid="true"],input:user-invalid,textarea:user-invalid)) {
+  border-color: var(--control-error-border);
+}
+:root body [data-control-surface][data-slot]:is([aria-invalid="true"],:user-invalid,:has([aria-invalid="true"],input:user-invalid,textarea:user-invalid)):is(:focus-within,:focus-visible,[data-state="open"]) {
+  box-shadow: var(--control-error-ring);
+}
+:root body [data-control-surface][data-slot][readonly] { background: var(--surface-subtle); }
+:root body [data-control-surface][data-slot]:is(:disabled,[data-disabled],:has(input:disabled,textarea:disabled)) {
+  background: var(--control-disabled-bg);
+  border-color: var(--control-border);
+  color: var(--control-disabled-ink);
+  opacity: 1;
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: auto;
+}
+:root body [data-control-surface][data-slot]::placeholder,
+:root body [data-slot="input-group-control"]::placeholder,
+:root body [data-slot="combobox-chip-input"]::placeholder { color: var(--muted); opacity: 1; }
+/* Composite fields have one focus ring, on the outer surface. */
+:root body :is([data-slot="input-group"],[data-slot="combobox-chips"]) :is(input,textarea) {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  min-width: 0;
+}
+:root body .search-box[data-slot="input-group"] { padding-block: 0; gap: 0; }
+:root body .search-box [data-slot="input-group-control"] { flex: 1; height: 100%; min-height: 0; border-radius: 0; }
+:root body .search-box [data-slot="input-group-control"]::-webkit-search-cancel-button { appearance: none; }
+:root body [data-slot="command-input-wrapper"]:focus-within { box-shadow: inset 0 -2px var(--control-focus-border); }
+:root body [data-slot="command-input"]:focus-visible { outline: none; box-shadow: none; }
+:root body :is([data-slot="select-item"],[data-slot="combobox-item"]):is([data-highlighted],[data-selected],[data-state="checked"]) { background: var(--selection-bg); color: var(--accent-ink); }
+:root body :is([data-slot="select-item"],[data-slot="combobox-item"])[data-disabled] { opacity: .5; cursor: not-allowed; }
+/* A stable secondary action across lists, reports and empty states. */
+:root body button.reset-filters-button[data-slot="button"] {
+  display: inline-flex;
+  gap: 8px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--control-border);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: none;
+}
+/* All outlined actions share feedback; page layout must not override these states. */
+:root body .btn[data-slot="button"][data-variant="outline"]:hover:where(:not(:disabled)) {
+  background: var(--surface-subtle);
+  border-color: var(--scrollbar-hover);
+  color: var(--ink);
+}
+:root body .btn[data-slot="button"][data-variant="outline"]:active:where(:not(:disabled)) { background: #e9edf1; }
+:root body .btn[data-slot="button"][data-variant="outline"]:focus-visible {
+  outline: none;
+  border-color: var(--control-focus-border);
+  box-shadow: var(--control-focus-ring);
+}
+@media(max-width:700px) {
+  :root body button.reset-filters-button[data-slot="button"] { height:44px; min-height:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  :root body [data-control-surface][data-slot] { transition:none; }
+}
+@media(forced-colors:active) {
+  :root body [data-control-surface][data-slot]:is(:focus-visible,:focus-within,[data-state="open"]),
+  :root body .btn[data-slot="button"][data-variant="outline"]:focus-visible { outline:2px solid Highlight; outline-offset:2px; }
+}

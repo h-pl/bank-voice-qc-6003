@@ -1,0 +1,132 @@
+/* Approved TXT: one transport row, full-width waveform, then two-line transcript. */
+.evidence-reader { container-type:inline-size; }
+.recording-player-linked { border:0; border-radius:0; padding:0 0 8px; background:#fff; margin:0 0 18px; display:flex; flex-direction:column; align-items:stretch; gap:12px; position:sticky; top:0; z-index:2; }
+.recording-player-linked .recording-heading { margin:0; gap:12px; justify-content:flex-start; }
+.recording-player-linked .recording-heading > span { font-weight:400; font-size:15px; }
+.recording-player-linked .recording-heading small { color:#626b76; font-size:12px; }
+.recording-player-linked .recording-heading small[data-error="true"] { color:var(--red); }
+.recording-player-linked .recording-controls { display:flex; gap:8px; min-width:0; flex-wrap:wrap; }
+.recording-player-linked .recording-controls > button { height:34px; min-height:34px; flex-shrink:0; padding:0 10px; gap:6px; }
+.recording-player-linked .recording-play { border-radius:6px; }
+.recording-player-linked .recording-time { color:var(--ink); white-space:nowrap; font-weight:400; font-size:13px; font-variant-numeric:tabular-nums; }
+.recording-player-linked .recording-time > span { color:var(--muted); }
+.recording-player-linked .recording-options { margin-left:auto; display:flex; align-items:center; gap:6px; }
+.recording-player-linked .recording-speed { width:84px; min-width:84px; white-space:nowrap; flex-shrink:0; min-height:32px; border:1px solid #e1e5e9; box-shadow:none; background:#fff; }
+.recording-player-linked .recording-timeline { min-width:0; margin:0; }
+.recording-axis { height:48px; background:#f7f8fa; border-radius:4px; position:relative; touch-action:none; }
+.recording-regions { position:absolute; inset:0; overflow:hidden; border-radius:3px; pointer-events:none; }
+.recording-regions > span { position:absolute; inset-block:0; }
+.recording-regions > span[data-hit="true"] { background:#fff0df; }
+.recording-regions > span[data-hovered="true"] { background:#e8edf1; }
+.recording-regions > span[data-hit="true"][data-hovered="true"] { background:#ffe4c7; }
+.recording-regions > span[data-selected="true"] { background:#ffdfbd; }
+.recording-waveform { position:absolute; inset:0; display:flex; align-items:center; gap:2px; padding-inline:2px; pointer-events:none; }
+.recording-waveform > span { flex:1; min-width:0; border-radius:1px; background:#aab4bf; }
+.recording-waveform-played { clip-path:inset(0 100% 0 0); }
+.recording-waveform-played > span { background:#586470; }
+.recording-axis-baseline { position:absolute; inset:calc(50% - 1px) 0 auto; height:2px; background:#c4cbd2; pointer-events:none; }
+.recording-player-linked .recording-wave-slider { position:absolute; inset:0; height:100%; cursor:pointer; }
+.recording-player-linked .recording-wave-slider [data-slot="slider-track"] { height:100%; background:transparent; border-radius:0; }
+.recording-player-linked .recording-wave-slider [data-slot="slider-range"] { background:transparent; }
+.recording-player-linked .recording-wave-slider [data-slot="slider-thumb"] { width:3px; height:48px; border:0; border-radius:1px; background:var(--orange); box-shadow:none; opacity:0; }
+.recording-player-linked .recording-wave-slider [data-slot="slider-thumb"]:hover { box-shadow:0 0 0 3px #ff9f4929; }
+.recording-player-linked .recording-wave-slider [data-slot="slider-thumb"]:focus-visible { outline:2px solid var(--orange); outline-offset:4px; }
+.recording-axis-hover { position:absolute; top:-24px; transform:translateX(-50%); padding:2px 5px; border-radius:3px; background:#303942; color:white; font-size:11px; line-height:18px; font-variant-numeric:tabular-nums; pointer-events:none; }
+.recording-axis-ticks { display:flex; justify-content:space-between; margin-top:6px; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+
+
+
+.recording-player-linked .recording-hint { margin:0; font-size:12px; }
+.recording-error { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.recording-error > button { height:auto; padding:0; }
+.evidence-reader .evidence-transcript-heading h3,
+.review2-findings-inline .finding-audio .evidence-transcript-heading h3,
+.evidence-reader > .section-title h3 { font-weight:400; }
+.alert-detail-shell .detail-heading h2 { font-weight:400; }
+.review2-findings-inline .review2-inline-issue-title { font-weight:400; }
+.evidence-reader .evidence-transcript-heading { min-height:32px; margin-bottom:12px; gap:8px; }
+.evidence-reader .evidence-transcript-heading h3 { font-size:15px; }
+.evidence-reader .evidence-locate-actions { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.evidence-reader .transcript-linked .utterance { display:grid; grid-template-columns:minmax(0,1fr); width:100%; padding:12px; gap:6px; margin:0; border:0; border-radius:4px; background:transparent; box-shadow:none; text-align:left; font-family:inherit; font-size:14px; font-weight:400; line-height:1.75; cursor:pointer; scroll-margin-block:210px 16px; touch-action:manipulation; }
+.evidence-reader .transcript-linked .utterance + .utterance { margin-top:4px; }
+.evidence-reader .transcript-linked .utterance.hit { background:#fff5ea; border:0; box-shadow:none; }
+.evidence-reader .transcript-linked .utterance:is(:hover,[data-hovered="true"]) { background:var(--surface-subtle); }
+.evidence-reader .transcript-linked .utterance.hit:is(:hover,[data-hovered="true"]) { background:#ffead4; }
+.evidence-reader .transcript-linked .utterance[data-selected="true"],
+.evidence-reader .transcript-linked .utterance[data-selected="true"]:is(:hover,[data-hovered="true"]) { background:#ffe5ca; }
+.evidence-reader .transcript-linked .utterance:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+.evidence-reader .transcript-linked .utterance-meta { display:flex; align-items:center; gap:10px; min-width:0; }
+.evidence-reader .transcript-linked .utterance .timecode { color:#626b76; text-decoration:none; font-weight:400; font-size:12px; font-family:inherit; font-variant-numeric:tabular-nums; }
+.evidence-reader .transcript-linked .utterance .speaker { padding:0 5px; font-weight:400; font-size:12px; border-radius:4px; }
+.evidence-reader .transcript-linked .utterance-text { min-width:0; color:var(--ink); overflow-wrap:anywhere; font-weight:400; }
+.evidence-reader .transcript-linked .utterance .hit-label { padding:0 4px; border-radius:3px; color:#99521c; background:#ffffffa6; line-height:20px; font-weight:400; font-size:12px; white-space:nowrap; }
+@container (max-width:380px) {
+  .recording-player-linked .recording-options { flex-basis:100%; margin-left:0; }
+  .recording-waveform { gap:1px; }
+}
+
+/* The native slider retains hit testing and keyboard semantics; only its visual is frame-driven. */
+.recording-playhead-track { position:absolute; inset:0; overflow:clip; pointer-events:none; }
+.recording-playhead { position:absolute; inset:0 3px 0 0; pointer-events:none; transform:translateX(0%); }
+.recording-playhead::before { content:""; position:absolute; inset-block:0; left:0; width:3px; border-radius:1px; background:var(--orange); }
+.recording-axis:has([data-slot="slider-thumb"]:focus-visible) { outline:2px solid var(--orange); outline-offset:3px; }
+/* This is essential media position, with no easing or decorative motion, including reduced-motion mode. */
+@media (prefers-reduced-motion:reduce) {
+  .recording-playhead, .recording-waveform-played { animation:none; transition:none; }
+}
+
+/* Keep the alert transport visible; the transcript owns the desktop reading scroll. */
+.recording-buffering { font-size:12px; color:var(--muted); }
+.evidence-reader .transcript-linked:focus-visible { outline:2px solid var(--orange); outline-offset:-2px; }
+@media (min-width:1251px) {
+  .case-workspace .alert-detail-shell .case-content:has(> .alert-evidence:only-child) { display:flex; flex:1; min-height:0; overflow:hidden; padding-bottom:12px; }
+  .case-workspace .alert-detail-shell .case-content > .alert-evidence:only-child { display:flex; flex:1; min-height:0; overflow:visible; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child > .evidence-reader { display:flex; flex-direction:column; flex:1; min-height:0; min-width:0; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .evidence-reader > :not(.transcript-linked) { flex-shrink:0; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .recording-player-linked { position:relative; margin:0 0 10px; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .evidence-transcript-heading { margin-bottom:8px; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .transcript-linked { flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior-y:contain; scrollbar-gutter:stable; scrollbar-width:thin; scrollbar-color:#b7bdc5 transparent; padding-right:8px; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .transcript-linked::-webkit-scrollbar { width:7px; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .transcript-linked::-webkit-scrollbar-thumb { background:#b7bdc5; border-radius:4px; }
+  .case-workspace .alert-detail-shell .alert-evidence:only-child .transcript-linked .utterance { scroll-margin-block:8px; }
+}
+
+/* Evidence navigation shares the transport row; keep rates readable at every width. */
+.recording-player-linked .recording-controls { align-items:center; }
+.recording-player-linked .evidence-locate-actions { flex-wrap:nowrap; white-space:nowrap; gap:6px; }
+.recording-player-linked .evidence-locate-actions button { height:34px; min-height:34px; padding:0 10px; font-weight:400; }
+.evidence-reader > .evidence-locate-actions { margin-bottom:12px; justify-content:flex-end; }
+.recording-player-linked .recording-speed [data-slot="select-value"] { overflow:visible; }
+
+/* Transport uses the same outline controls and palette as the rest of the workspace. */
+.recording-player-linked .recording-controls > button { width:34px; padding:0; }
+.recording-player-linked :is(.recording-play,.recording-rewind) { color:var(--ink); box-shadow:none; }
+.evidence-reader .transcript-linked .utterance-meta .hit-label { display:inline-flex; margin-left:auto; color:var(--accent-ink); background:var(--surface); }
+.recording-player-linked .evidence-locate-actions button { width:32px; padding:0; }
+
+/* Explicit states avoid the global outline background overriding utility hover styles. */
+.recording-player-linked .recording-controls button:not(:disabled) { cursor:pointer; transition:background-color 150ms ease, border-color 150ms ease; }
+@media (hover:hover) and (pointer:fine) {
+  .recording-player-linked .recording-controls button:hover:not(:disabled) { background:var(--surface-subtle); color:var(--ink); border-color:var(--scrollbar-hover); }
+}
+.recording-player-linked .recording-controls button:active:not(:disabled) { background:var(--line); border-color:var(--scrollbar-active); }
+.recording-player-linked .recording-controls button:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+@media (prefers-reduced-motion:reduce) {
+  .recording-player-linked .recording-controls button:not(:disabled) { transition:none; }
+}
+
+/* Role hues stay separate from orange evidence, selection and playback indicators. */
+.evidence-reader { --wave-agent:#537bb5; --wave-customer:#338d7b; --wave-agent-played:#355a8a; --wave-customer-played:#216755; --speaker-agent-bg:#eef3fb; --speaker-customer-bg:#ebf5f2; }
+.recording-waveform > span[data-speaker="agent"] { background:var(--wave-agent); }
+.recording-waveform > span[data-speaker="customer"] { background:var(--wave-customer); }
+.recording-waveform-played > span[data-speaker="agent"] { background:var(--wave-agent-played); }
+.recording-waveform-played > span[data-speaker="customer"] { background:var(--wave-customer-played); }
+
+.evidence-reader .transcript-linked .speaker.agent { color:var(--wave-agent-played); background:var(--speaker-agent-bg); }
+.evidence-reader .transcript-linked .speaker.customer { color:var(--wave-customer-played); background:var(--speaker-customer-bg); }
+
+/* Shared audio absence is a quiet, honest placeholder across evidence readers. */
+.evidence-reader .recording-unavailable { display:flex; align-items:center; justify-content:center; gap:8px; min-height:64px; padding:16px; margin:0 0 16px; border:1px solid var(--line); border-radius:6px; background:var(--surface-subtle); color:var(--muted); font-size:13px; font-weight:400; }
+.evidence-reader .recording-unavailable svg { flex-shrink:0; }
+.alert-detail-shell .case-tabs { flex-wrap:nowrap; overflow-x:auto; }
+.alert-detail-shell .case-tabs > button { flex-shrink:0; white-space:nowrap; }

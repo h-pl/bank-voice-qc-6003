@@ -1,0 +1,444 @@
+[
+  {
+    "id": "doxcnh2SkIGZOZy38AkFZqNxKYb",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 230,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "全量检测：指标定义及资源对应关系由后台固定提供。所有接入通话自动、全量进入检测，统一执行全部已开启的指标规则；不配置或展示适用业务范围，不按通话业务类别过滤规则。告警队列字段在风险预警页的“列表展示设置”维护。主管编辑，质检员只读，保存后生效。",
+    "verified": true,
+    "verifiedRevision": 230
+  },
+  {
+    "id": "doxcnhqb1ZYKmk7Qbawx7NONT2f",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 231,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "后台提供指标定义和固定资源关系，所有接入业务统一执行已开启规则；主管启停指标并编辑对应规则的检测条件",
+    "verified": true,
+    "verifiedRevision": 231
+  },
+  {
+    "id": "doxcnjWWfQpcKkNwe0gPA2Qu3Ce",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 232,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "配置归属：检测特征、检测角色、阶段范围、累计次数、统计窗口和持续时长在指标规则编辑中填写；策略只配置规则关联、预警等级、通知接收人、重复提醒间隔和流程。",
+    "verified": true,
+    "verifiedRevision": 232
+  },
+  {
+    "id": "doxcniZ1m554sr7AXjwP8Rbtpzc",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 233,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "次数与持续：单次命中、累计 N 次或持续 N 秒按能力开放；累计窗口使用秒数输入框，允许 0–3600 的整数；0 表示整通通话，正数表示最近指定秒数，不提供预设选项。关键词每次有效出现计一次，其他指标按检测服务事件去重；只在同通话、同规则内累计。持续时长按同角色同连续状态计算，不能拼接角色或把次数换算成时长。",
+    "verified": true,
+    "verifiedRevision": 233
+  },
+  {
+    "id": "doxcnqAi8D6n4t72Mup8tgcdWBw",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 234,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "通知接收人",
+    "verified": true,
+    "verifiedRevision": 234
+  },
+  {
+    "id": "doxcnt0WnvUuEm9NpN7JtjugZ7c",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 235,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "按组织范围确定实际接收人；选择质检员时通知组织范围内具有质检员角色的人员；选择当前坐席才向该通话坐席发送预警通知。通知接收人与流程责任人分别配置",
+    "verified": true,
+    "verifiedRevision": 235
+  },
+  {
+    "id": "doxcnUp6nd3qLKeiNj2iNkITHqb",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 236,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "通知入口（固定）",
+    "verified": true,
+    "verifiedRevision": 236
+  },
+  {
+    "id": "doxcnN11tG4c9FE2iqpypRkPX1g",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 237,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "通知中心和提醒列表",
+    "verified": true,
+    "verifiedRevision": 237
+  },
+  {
+    "id": "doxcnfj7TIrzCf3MZrRWPjZieke",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 238,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "策略不配置提醒方式或通话中提醒开关。实时与事后检测的有效命中均通知所选接收人，消息统一进入通知中心和提醒列表；站内待办由流程独立创建",
+    "verified": true,
+    "verifiedRevision": 238
+  },
+  {
+    "id": "doxcnjn1Bxnvyn8BkX01BcPiDXe",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 239,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "按通话、策略、接收对象去重；首次立即提醒，再次命中且达到间隔时再次提醒。每通话仅一次只发送首次提醒；自定义为 1–86400 的整数秒。新增问题的办理待办单独创建",
+    "verified": true,
+    "verifiedRevision": 239
+  },
+  {
+    "id": "doxcn3cTuqoGjqFXXnrePMeOCdb",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 240,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "实时预警通知",
+    "verified": true,
+    "verifiedRevision": 240
+  },
+  {
+    "id": "doxcngsHeJGi7oojpGwIqteOTqc",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 241,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "实时命中后向策略所选接收人发送通知，消息进入通知中心和提醒列表，记录投递与已读状态；正式结果仍由主管分发。",
+    "verified": true,
+    "verifiedRevision": 241
+  },
+  {
+    "id": "doxcnbBkUeNKAF0R54f1K1mroMi",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 242,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "实时预警通知（P1）",
+    "verified": true,
+    "verifiedRevision": 242
+  },
+  {
+    "id": "doxcnTynZgAiAgLiwRmRs9hfMQd",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 243,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "实时通话的已开启指标形成有效规则命中，使用关联策略或系统默认设置的通知接收人及重复提醒间隔。",
+    "verified": true,
+    "verifiedRevision": 243
+  },
+  {
+    "id": "doxcnwX1B1bC7FA4GfWyXHS8rhQ",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 244,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "首次命中立即通知所选接收人；重复命中按通话、策略、接收人及间隔去重，消息统一进入通知中心和提醒列表，保存关联告警 / 问题和投递状态。事后检测使用同一通知入口；已读保持业务状态，提醒次数不增加告警数量。",
+    "verified": true,
+    "verifiedRevision": 244
+  },
+  {
+    "id": "doxcnQRTeRjz6zvnUxQvQDfoRyN",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 245,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "指标定义与启停状态、唯一资源标识、资源内容、规则标识及规则检测条件；规则与策略关联、预警等级、通知接收人、重复提醒间隔和流程选择；当前配置、生效时间、修改人与操作记录。",
+    "verified": true,
+    "verifiedRevision": 245
+  },
+  {
+    "id": "doxcn006eH9qKI4uggcayDL3XXK",
+    "result": {
+      "ok": true,
+      "identity": "user",
+      "data": {
+        "document": {
+          "revision_id": 246,
+          "url": "https://acnc6zeentra.feishu.cn/docx/ZJP3dDgxpoV4PVxbkJfc8h5fnAf"
+        },
+        "result": "success",
+        "warnings": []
+      },
+      "_notice": {
+        "update": {
+          "command": "lark-cli update",
+          "current": "1.0.94",
+          "latest": "1.0.98",
+          "message": "lark-cli 1.0.98 available, current 1.0.94, run: lark-cli update"
+        }
+      }
+    },
+    "expected": "实时及事后检测的有效命中按策略或默认设置通知所选接收人，统一进入通知中心和提醒列表，并记录投递、已读状态；按通话、策略、接收人和重复提醒间隔去重，失败可重试，已读保持业务状态。",
+    "verified": true,
+    "verifiedRevision": 246
+  }
+]

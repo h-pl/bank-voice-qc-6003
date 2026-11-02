@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "environment": "isolated in-memory prototype state",
+  "results": [
+    {
+      "id": "D02",
+      "case": "在办问题改绑",
+      "before": {
+        "level": "high",
+        "policy": "合规安全预警"
+      },
+      "afterDetach": "high",
+      "afterRebind": "high",
+      "originalHitPolicy": "合规安全预警",
+      "problemCount": 1,
+      "hitCount": 1
+    },
+    {
+      "id": "D03",
+      "case": "表达资源删除特征",
+      "content": "表达特征,说明\n静默,仅保留静默",
+      "availableFeatures": [
+        "静默",
+        "抢话",
+        "语速过快",
+        "语速过慢"
+      ],
+      "enabledConditions": [
+        "静默",
+        "抢话",
+        "语速过快",
+        "语速过慢"
+      ]
+    },
+    {
+      "case": "引用中的意图改名",
+      "result": "保存被拦截",
+      "error": "检测特征「查询转账进度」已失效，请重新选择或取消触发"
+    }
+  ]
+}

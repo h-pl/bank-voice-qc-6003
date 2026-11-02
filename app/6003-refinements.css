@@ -1,0 +1,395 @@
+/* 6003 business layouts reuse the 6001 control styles without visual overrides. */
+.call-alert-context-meta{flex:1;gap:10px}
+.call-alert-detection{display:inline-flex;align-items:center;gap:2px}
+.call-alert-context-meta>.btn{margin-left:auto}
+.call-alert-context .call-alert-problem-switch{flex-basis:100%}
+.call-alert-context{gap:10px;padding:12px 18px}
+.call-alert-context .badge{white-space:nowrap}
+/* Neutralize inherited fieldset margins only in the new policy editor. */
+.action-dialog .policy6003-editor .policy-form{margin:0;padding:0;gap:20px}
+.action-dialog .policy6003-editor label{margin:0;font-size:13px;line-height:22px;font-weight:400}
+.action-dialog .policy6003-editor .configuration-fieldset{margin:0;padding:0}
+.action-dialog .policy6003-editor .indicator-config-form{margin:0 0 16px;gap:16px 24px}
+.action-dialog .policy6003-editor .config-choice{display:flex;align-items:center;gap:8px}
+.action-dialog .policy6003-editor .policy6003-rule-option{display:flex;align-items:flex-start;gap:10px}
+/* Keep hidden native select mirrors inside the intended scrolling body. */
+.modal[data-slot=dialog-content].action-dialog:has(>.resource6003-form),
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor){overflow:clip}
+.resource6003-form,.policy6003-editor{position:relative;overflow:clip}
+.resource6003-form .resource-dialog-body,.policy6003-editor .action-form-body{position:relative}
+.action-dialog .policy6003-editor .policy-config-footer>.policy-footer-row{flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap}
+.policy6003-editor .dialog-footer-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto}
+.policy6003-editor .policy-footer-row>.dialog-footer-note{flex-basis:100%}
+.ui6003 .indicator-toggle{display:flex;align-items:center;gap:12px;font-size:14px;white-space:nowrap;font-weight:500}.ui6003 .condition-feature-options{display:flex;gap:12px 24px;flex-wrap:wrap;margin:12px 0 20px}.ui6003 .config-conditions fieldset:disabled{opacity:.5}.config-change-history{margin-top:24px;color:var(--text-secondary,#667085);font-size:13px}.config-change-history summary{cursor:pointer;padding:12px 0;font-weight:600}.config-change-history article{padding:16px 0;border-top:1px solid #e8ebef}.config-change-history dl>div{display:grid;grid-template-columns:120px 1fr;gap:16px;margin:12px 0}.config-change-history pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f7f8;border-radius:6px;padding:10px;margin:6px 0 12px;font-family:inherit;font-size:12px;max-height:180px;overflow:auto}.ui6003 .settings6003-form .configuration-fieldset{margin-bottom:20px}.ui6003 .alert-summary-facts{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:13px;color:#667085;margin:12px 0}.ui6003 .alert-followup{display:flex;gap:12px;align-items:center;justify-content:space-between;background:#fff4e9;border-radius:8px;padding:12px 16px;margin:12px 0}.ui6003 .alert-filters-extra{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.ui6003 .alert-filters-extra label{display:flex;flex-direction:column;gap:8px}.ui6003 .alert-hit-record{padding:14px 0;border-bottom:1px solid #e8ebef}.ui6003 .alert-hit-record p{margin:6px 0}.call-alert-preview{padding:16px}.call-alert-preview .call-record-card{margin:12px 0}.call-alert-preview .alert-summary-facts{margin-bottom:20px}@media(max-width:700px){.ui6003 .alert-filters-extra{grid-template-columns:1fr}.ui6003 .alert-followup{align-items:flex-start;flex-direction:column}.ui6003 .strategy-filter-actions{flex-wrap:wrap}.config-change-history dl>div{grid-template-columns:1fr;gap:6px}}
+.ui6003 .indicator-rule-fields{margin:0;padding:0;min-width:0;border:0}.ui6003 .indicator-rule-fields>.config-conditions{margin-top:20px}.ui6003 .indicator-rule-fields>label{display:grid;gap:8px;margin-top:24px}.ui6003 .rule-section-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ui6003 .condition-feature-options .config-choice{display:inline-flex;align-items:center;gap:8px;font-weight:400}
+
+/* Resource catalog: restored spacing, shared column starts and clear actions. */
+.resource-workspace .resource-table{table-layout:fixed;min-width:1040px}
+.resource-workspace .resource-table :is(th,td){width:auto;text-align:left}
+.resource-table col{width:calc(100% / 6)}
+.resource-workspace .resource-row-actions{margin:0;gap:8px}
+.resource-workspace .resource-row-actions button{padding-inline:0;min-height:32px}
+.resource-workspace .resource-table tbody tr{height:64px}
+.resource-workspace .resource-table td{height:64px;padding:14px 16px;line-height:1.5;vertical-align:middle}
+.resource-workspace .resource-table thead tr{height:48px}
+.resource-workspace .resource-table th{height:48px;padding:12px 16px}
+
+/* A single gutter and spacing scale for resource dialogs. */
+.modal-heading-with-aside{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;min-width:0}
+.modal-heading-with-aside>h2{flex-shrink:0}
+.modal-heading-with-aside>.hotword-preview-references{flex-shrink:1;min-width:0}
+.modal-heading-with-aside>.modal-description{flex-basis:100%}
+.modal[data-slot=dialog-content].action-dialog:has(>.resource-library-form){--resource-gutter:24px}
+.modal[data-slot=dialog-content].action-dialog:has(>.resource-library-form)>header{padding:20px var(--resource-gutter) 12px}
+.resource-library-form .resource-dialog-body{padding:0 var(--resource-gutter);scrollbar-gutter:auto}
+.resource-library-form .resource-fields{padding-top:0}
+.resource-library-form .resource-dialog-footer{padding:12px var(--resource-gutter) 20px}
+.resource-library-form .resource-record-table tbody tr:last-child>:is(td,th){padding-bottom:10px}
+.resource-library-form .resource-file-toolbar{min-height:32px}
+.resource-library-form .resource-grid-editor{gap:12px}
+.resource-library-form .resource-record-table thead th{height:40px;padding-block:10px;background:var(--surface-subtle,#f7f8fa);vertical-align:middle}
+.resource-library-form .resource-edit-table tbody .resource-row-number{padding-top:16px;background:var(--surface)}
+.resource-hint-content{text-align:left;text-align-last:auto;text-justify:auto;letter-spacing:normal;word-spacing:normal;text-wrap:wrap}
+
+/* Professional resource restores the original SOP step matrix and stacked knowledge section. */
+.professional-library-form .resource-dialog-body{display:block;overflow:auto}
+.professional-library-form .professional-resource-toolbar{display:grid;gap:16px;margin-bottom:20px}
+.professional-library-form .professional-resource-section,.professional-library-form .hotword-preview+.hotword-preview{margin-top:24px}
+.professional-library-form .resource-fields{display:block}
+.professional-library-form .resource-part-heading{font-size:15px;margin:0 0 16px}
+.modal[data-slot=dialog-content].action-dialog:has(>.professional-library-form)>header{padding:24px 28px 16px}
+.professional-library-form .resource-dialog-body{padding:4px 28px 16px}
+.professional-library-form .resource-dialog-footer{padding:18px 28px 24px}
+.professional-library-form .resource-dialog-footer .resource-add-row{margin-right:0}
+.professional-library-form .resource-dialog-footer .resource-add-row:nth-child(2){margin-right:auto}
+@media(max-width:760px){
+ .modal[data-slot=dialog-content].action-dialog:has(>.resource-library-form){--resource-gutter:16px}
+ .modal[data-slot=dialog-content].action-dialog:has(>.professional-library-form)>header{padding-inline:20px}
+ .professional-library-form .resource-dialog-body{padding:4px 20px 8px}
+ .professional-library-form .resource-dialog-footer{padding:16px 20px 20px}
+}
+
+/* Rule details follow configuration, shared policy, then execution. */
+.ui6003 .rule-configuration .policy-section-title{flex-wrap:wrap}
+.ui6003 .rule-condition-summary{margin-top:22px}
+.ui6003 .rule-condition-summary h4{margin:0 0 10px;font-size:13px;font-weight:500}
+.ui6003 .rule-condition-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px;line-height:1.7}
+.ui6003 .rule-condition-table th{background:var(--surface-subtle,#f7f8fa);color:var(--muted);font-weight:400}
+.ui6003 .rule-condition-table :is(th,td){padding:9px 12px;text-align:left;vertical-align:top;border:0;overflow-wrap:anywhere}
+.ui6003 .rule-condition-table :is(th,td):first-child{width:30%}
+.ui6003 .rule-condition-table :is(th,td):last-child{width:34%}
+.ui6003 .rule-policy-name{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px}
+.ui6003 .rule-policy-name strong{font-weight:500}
+.ui6003 .rule-policy-sharing{font-size:12px;color:var(--muted)}
+.ui6003 .rule-editor-context{margin:0 0 20px}
+@media(max-width:560px){.ui6003 .rule-condition-table :is(th,td){padding:8px 6px}.ui6003 .rule-configuration .rule-section-actions{margin-left:auto}}
+
+
+/* Screenshot revision: balanced canvas gutters and one table scroll owner. */
+.resources-shell .main{height:100dvh;display:flex;flex-direction:column;min-width:0}
+.resources-shell .topbar{flex-shrink:0}
+.resources-shell .main>main{flex:1;min-height:0;min-width:0;width:100%;padding:24px 28px;overflow:hidden}
+.resources-shell main>div{height:100%;min-height:0}
+.resources-shell .resource-workspace{display:flex;flex-direction:column;height:100%;min-height:0;gap:16px}
+.resources-shell .resource-workspace-filters{padding:0;flex-shrink:0}
+.resources-shell .resource-workspace-filters .search-box{width:600px;max-width:100%}
+.resources-shell .resource-catalog{height:auto;min-height:0;flex:1}
+.resources-shell .resource-table-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scroll-padding-top:48px}
+.resources-shell .resource-table-scroll [data-slot=table-container]{overflow:visible}
+.resources-shell .resource-table thead{position:sticky;top:0;z-index:2;background:var(--surface)}
+.resources-shell .resource-table :is(th,td){overflow-wrap:anywhere;white-space:normal}
+.resources-shell .resource-table :is(th,td):nth-child(2),
+.resources-shell .resource-table :is(th,td):nth-child(5),
+.resources-shell .resource-table :is(th,td):last-child{white-space:nowrap}
+.resources-shell .resource-table-scroll:focus-visible{outline:0;background:var(--surface-subtle)}
+
+/* Fixed navigation icon rail, footer controls, and header call entry. */
+.app-shell{--navigation-duration:240ms;--navigation-ease:cubic-bezier(.32,.72,0,1)}
+.sidebar .brand-copy{overflow:hidden;white-space:nowrap}
+.sidebar nav a>svg{flex-shrink:0}
+.topbar-utilities{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.topbar .topbar-utilities>button{display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:36px;min-width:32px;min-height:36px;padding:0;color:var(--muted);border:0;border-radius:7px}
+.topbar .topbar-utilities>button:focus-visible{outline:0;background:var(--selection-bg);color:var(--accent-ink)}
+.topbar .topbar-utilities>button>svg{width:18px;height:18px;flex:0 0 18px}
+.sidebar .sidebar-utilities{position:relative;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;margin-top:auto;padding:16px 0;border:0;overflow:clip;height:68px}
+.sidebar .sidebar-utilities button{display:flex;align-items:center;justify-content:center;flex:0 0 42px;width:42px;min-width:42px;height:36px;min-height:36px;padding:0;border:0;border-radius:7px;color:var(--muted)}
+.sidebar .sidebar-utilities .sidebar-toggle{margin-left:auto}
+.sidebar .sidebar-utilities .sidebar-reset{position:absolute;left:0;top:16px;opacity:1;visibility:visible;transition:opacity var(--navigation-duration) var(--navigation-ease),visibility 0s}
+.sidebar .sidebar-utilities button>svg{width:18px;height:18px;flex:0 0 18px}
+.sidebar .sidebar-utilities button:focus-visible{outline:0;box-shadow:none;background:var(--selection-bg);color:var(--accent-ink)}
+.app-shell.sidebar-collapsed>.sidebar .sidebar-reset{opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--navigation-duration) var(--navigation-ease),visibility 0s var(--navigation-duration)}
+
+@media(min-width:701px){
+ .app-shell>.sidebar,html[data-input=keyboard] .app-shell>.sidebar{padding-inline:14px;transition:width var(--navigation-duration) var(--navigation-ease)}
+ .app-shell>.main{transition:margin-left var(--navigation-duration) var(--navigation-ease)}
+ .app-shell.sidebar-collapsed{--sidebar:72px}
+ .app-shell>.sidebar .brand{flex:0 0 64px;height:64px;align-items:flex-start;padding:0;gap:10px;overflow:clip}
+ .app-shell>.sidebar .brand-mark{flex:0 0 36px;margin-left:3px}
+ .app-shell>.sidebar .brand-copy{flex:0 0 142px;padding-top:1px}
+ .app-shell>.sidebar nav{min-height:0;overflow-x:hidden;overflow-y:auto}
+ .app-shell>.sidebar nav a{height:46px;min-height:46px;padding:0 12px;gap:10px;overflow:clip;white-space:nowrap}
+ .app-shell>.sidebar nav a>span{flex:0 0 auto;white-space:nowrap}
+ .app-shell>.sidebar nav a>em{flex-shrink:0}
+ .app-shell>.sidebar .nav-label{height:20px;line-height:20px;margin:10px 10px 8px;white-space:nowrap}
+ .app-shell>.sidebar :is(.brand-copy,.nav-label,nav a>span,nav a>em){opacity:1;transition:opacity var(--navigation-duration) var(--navigation-ease)}
+ .app-shell.sidebar-collapsed>.sidebar :is(.brand-copy,.nav-label,nav a>span,nav a>em){opacity:0;pointer-events:none}
+}
+@media(max-width:700px){
+ .sidebar-utilities .sidebar-toggle{display:none}
+ .resources-shell .main>main{padding:16px 12px}
+ .resources-shell .resource-workspace-filters .search-box{width:100%;flex-basis:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .sidebar .sidebar-utilities .sidebar-reset,.app-shell.sidebar-collapsed>.sidebar .sidebar-reset,.app-shell>.sidebar,.app-shell>.main,
+ .app-shell>.sidebar :is(.brand-copy,.nav-label,nav a>span,nav a>em){transition:none}
+}
+
+/* Rule workspace: indicator, resource, detection conditions and warning policy. */
+.ui6003 .indicator-rule-card .indicator-card-heading{align-items:center;gap:8px;margin-bottom:14px}
+.ui6003 .indicator-rule-card .indicator-card-heading .indicator-card-indicator{min-height:24px;height:auto;max-width:45%;padding:2px 7px;border:0;box-shadow:none;background:var(--surface-subtle);font-size:11px;line-height:20px;white-space:nowrap;color:var(--muted);font-weight:400}
+.ui6003 .indicator-rule-card .indicator-card-field{grid-template-columns:56px minmax(0,1fr);gap:8px}
+.ui6003 .indicator-rule-card .indicator-card-alerts{margin-top:6px;grid-template-columns:56px minmax(0,1fr) auto;align-items:center}
+.ui6003 .indicator-card-toggle{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-end;gap:8px;width:fit-content;margin:0;min-height:24px;font-size:12px;font-weight:400;color:var(--muted);cursor:pointer}
+.ui6003 .indicator-card-toggle:has(:disabled){cursor:default}
+.ui6003 .indicator-rule-card:has(.indicator-card-toggle:hover):not(.selected){background:transparent}
+.ui6003 .indicator-rule-card>.record-row-open:focus-visible{outline:0;background:transparent}
+.ui6003 .indicator-rule-card:has(>.record-row-open:focus-visible){background:var(--selection-bg)}
+.ui6003 :is(.rule-heading,.warning-policy-detail>.policy-heading){min-height:56px;padding:12px 24px;align-items:center}
+.ui6003 :is(.rule-heading,.warning-policy-detail>.policy-heading) h2{line-height:32px;margin:0}
+.ui6003:has(.rule-heading) .policy-queue-heading{min-height:56px;padding-block:12px}
+.ui6003 .rule-heading+.rule-configuration{padding-top:4px}
+.ui6003 .policy-detail:has(>.rule-heading)>.policy-section{padding-bottom:12px}
+.ui6003 .policy-detail:has(>.rule-heading)>.policy-section:last-child{padding-bottom:24px}
+.ui6003 .rule-configuration .policy-section-title{margin-bottom:12px}
+.ui6003 .rule-heading h2{margin:0}
+.ui6003 .rule-resource .policy-section-title{margin-bottom:12px}
+.ui6003 .rule-configuration .rule-condition-summary{margin-top:0}
+.ui6003 .rule-configuration .policy-readonly,
+.ui6003 .rule-linked-policy .policy-readonly{margin:0}
+.ui6003 .rule-condition-table th:first-child{border-radius:6px 0 0 6px}
+.ui6003 .rule-condition-table th:last-child{border-radius:0 6px 6px 0}
+/* Compact reset confirmation: one footer, with spacing instead of dividers. */
+.modal[data-slot="dialog-content"]:has(> .modal-body > .reset-confirmation) {
+  width:min(480px, calc(100vw - 48px));
+  max-width:480px;
+  border-radius:16px;
+  box-shadow:none;
+}
+.modal[data-slot="dialog-content"]:has(> .modal-body > .reset-confirmation) > header {
+  padding:24px 24px 16px;
+}
+.modal[data-slot="dialog-content"]:has(> .modal-body > .reset-confirmation) > .modal-body {
+  padding:0 24px;
+  scrollbar-gutter:auto;
+}
+.reset-confirmation p {
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+.reset-confirmation .reset-confirmation-warning {
+  margin-top:10px;
+  color:var(--ink);
+  font-weight:500;
+}
+.modal[data-slot="dialog-content"]:has(> .modal-body > .reset-confirmation) > .modal-actions {
+  padding:24px;
+  gap:8px;
+}
+
+/* Overlay scrollbars preserve all four rounded corners without a layout gutter. */
+.overlay-scroll-area{position:relative;overflow:hidden;border-radius:12px;isolation:isolate}
+.overlay-scroll-viewport{width:100%;height:100%;border-radius:inherit;scrollbar-gutter:auto;scrollbar-width:none!important}
+.overlay-scroll-viewport::-webkit-scrollbar{display:none;width:0;height:0}
+.overlay-scroll-viewport>div{display:block!important;min-width:100%}
+.overlay-scrollbar{display:flex;position:absolute;z-index:4;touch-action:none;user-select:none;background:transparent;opacity:1;transition:opacity 180ms cubic-bezier(.23,1,.32,1)}
+.overlay-scrollbar[data-orientation=vertical]{width:8px;top:8px!important;right:4px!important;bottom:8px!important}
+.overlay-scrollbar[data-orientation=horizontal]{height:8px;left:8px!important;right:16px!important;bottom:4px!important;flex-direction:column}
+.overlay-scrollbar[data-state=hidden]{opacity:0;pointer-events:none}
+.overlay-scrollbar[data-state=visible]{transition-duration:0ms}
+.overlay-scrollbar:not(:has(.overlay-scroll-thumb)){display:none}
+.overlay-scrollbar:active{opacity:1}
+.overlay-scroll-thumb{position:relative;flex:1;border-radius:999px;background:#808080}
+.resources-shell .resource-table-scroll{flex:none;padding:0 8px}
+@media(prefers-reduced-motion:reduce){.overlay-scrollbar{transition:none}}
+@media(forced-colors:active){.overlay-scroll-thumb{background:CanvasText;forced-color-adjust:none}}
+
+/* Fixed table heading sits outside the body viewport; horizontal offsets stay aligned. */
+.resources-shell .resource-catalog .overlay-scroll-header{height:48px;flex-shrink:0;overflow:hidden;padding:0 8px;scrollbar-width:none}
+.resources-shell .overlay-scroll-header>[data-slot=table-container]{overflow:visible}
+.resources-shell .resource-catalog .resource-table-scroll{height:auto;flex:1;border-radius:0 0 12px 12px;scroll-padding-top:0}
+.resources-shell .resource-catalog>.overlay-scrollbar[data-orientation=vertical]{top:56px!important}
+.resources-shell .resource-table .resource-accessible-header{position:absolute;top:auto;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media print{.overlay-scrollbar{display:none}}
+
+/* Shared desktop canvas gutters: keep header and every page on the same grid. */
+@media(min-width:761px){
+ .app-shell{--page-gutter:16px;--page-work-height:calc(100dvh - 68px - 2 * var(--page-gutter))}
+ .app-shell>.main>main{padding:var(--page-gutter)}
+ .app-shell>.main>.topbar{padding-inline:var(--page-gutter)}
+ .app-shell .strategy-redesign.policy-layout{height:calc(var(--page-work-height) - 116px)}
+}
+@media(min-width:1151px){
+ .app-shell :is(.work-panel,.call-focus,.workbench.page-work-surface){height:var(--page-work-height)}
+}
+
+/* Strategy queue: heading stays fixed; the thumb overlays only the list body. */
+.strategy-redesign .policy-list-scroll{flex:1;min-height:0;min-width:0;border-radius:0 0 12px 12px}
+.strategy-redesign .policy-list-scroll .policy-items{overflow:visible;flex:none;max-height:none;min-height:0;padding:0 8px 8px}
+.strategy-redesign .policy-list-scroll .overlay-scroll-viewport{overscroll-behavior:contain}
+.strategy-redesign .policy-list-scroll .overlay-scroll-viewport:focus-visible{outline:0;background:var(--surface-subtle)}
+
+/* Indicator state feedback: interruptible thumb motion and live enabled counts. */
+.strategy-redesign .indicator-switch{transition:background-color 160ms ease}
+.strategy-redesign .indicator-switch [data-slot=switch-thumb]{transition:transform 160ms cubic-bezier(.23,1,.32,1)}
+.strategy-redesign .policy-queue-count{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){
+ .strategy-redesign .indicator-switch{transition:background-color 100ms ease}
+ .strategy-redesign .indicator-switch [data-slot=switch-thumb]{transition:none}
+}
+
+/* Empty strategy panes center feedback within their available reading area. */
+@media(min-width:851px){
+ .strategy-redesign .policy-list-scroll:has(.empty) .overlay-scroll-viewport>div{height:100%}
+ .strategy-redesign .policy-list-scroll .policy-items:has(>.empty){height:100%;justify-content:center;padding:16px 8px}
+ .strategy-redesign>.policy-detail:has(>.empty){display:grid;place-items:center;padding:16px;scrollbar-gutter:auto}
+ .strategy-redesign :is(.policy-items,.policy-detail)>.empty{min-height:0;width:100%;max-width:320px;padding:24px 16px;gap:12px;margin-inline:auto}
+}
+
+/* Voice rules: one condition per row, with parameters beside their selector. */
+.modal[data-slot=dialog-content].action-dialog:has(>.voice-rule-editor){width:min(960px,calc(100vw - 48px));max-width:960px;height:min(640px,calc(100dvh - 48px))}
+.modal[data-slot=dialog-content].action-dialog:has(>.voice-rule-editor)>header{padding:24px 24px 20px;flex-shrink:0}
+.voice-rule-editor .resource-dialog-body.resource6003-body{padding:0 24px 24px}
+.voice-rule-editor .resource-dialog-footer{padding:12px 24px 24px}
+.voice-rule-editor .rule-editor-context{display:flex;gap:48px;margin:0 0 24px;font-size:13px}
+.voice-rule-editor .rule-editor-context>div{display:flex;gap:12px;align-items:baseline}
+.voice-rule-editor .voice-conditions>h3{display:flex;align-items:center;gap:6px;font-size:14px;margin:0 0 6px}
+.voice-rule-editor .voice-conditions-description{font-size:13px;color:var(--muted);margin:0 0 16px}
+.voice-rule-editor .voice-conditions-table{width:100%;table-layout:fixed;border-collapse:collapse}
+.voice-rule-editor .voice-conditions-table col:nth-child(1){width:26%}
+.voice-rule-editor .voice-conditions-table col:nth-child(2){width:34%}
+.voice-rule-editor .voice-conditions-table col:nth-child(3){width:40%}
+.voice-rule-editor .voice-conditions-table :is(th,td){text-align:left;vertical-align:top;padding:12px 20px 12px 0;border:0;background:transparent;font-size:13px;font-weight:400}
+.voice-rule-editor .voice-conditions-table tr>:last-child{padding-right:0}
+.voice-rule-editor .voice-conditions-table thead th{padding-top:0;padding-bottom:4px;color:var(--muted)}
+.voice-rule-editor .voice-condition-choice{display:flex;gap:8px;align-items:center;min-height:38px;margin:0;cursor:pointer;font-weight:400}
+.voice-rule-editor .voice-condition-cell{display:flex;flex-direction:column;gap:10px;min-width:0}
+.voice-rule-editor .voice-condition-cell>[role=combobox]{width:100%}
+.voice-rule-editor tr[data-enabled=false] td{opacity:.5}
+.voice-rule-editor .voice-detail-row{display:flex;align-items:flex-start;gap:12px;min-width:0}
+.voice-rule-editor .voice-number-field{display:grid;grid-template-columns:max-content 64px max-content max-content;align-items:center;gap:4px;font-size:12px;color:var(--muted)}
+.voice-rule-editor .voice-number-field label{font-size:12px;font-weight:400;margin:0}
+.voice-rule-editor .voice-number-field input{width:64px;min-width:0;height:34px;font-size:13px;padding-inline:8px;font-variant-numeric:tabular-nums}
+.voice-rule-editor .voice-number-field .form-error{grid-column:1/-1;margin:0;font-size:12px;white-space:normal}
+.voice-rule-editor .indicator-rule-fields>label{display:block;margin-top:24px;font-size:13px;font-weight:400}
+.voice-rule-editor .indicator-rule-fields>label>input{display:block;width:100%;margin-top:8px}
+.voice-rule-editor .voice-note-optional{color:var(--muted)}
+.voice-rule-editor :is(input,[role=combobox],[role=checkbox]){scroll-margin-block:16px}
+
+/* Policy form: rules, notification recipients/frequency, then task routing. */
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor){width:min(920px,calc(100vw - 48px));max-width:920px;height:min(680px,calc(100dvh - 48px))}
+.action-dialog .policy6003-editor .policy6003-basics{grid-template-columns:minmax(0,2fr) minmax(0,1fr);margin:0}
+.action-dialog .policy6003-editor .policy6003-field{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:13px}
+.action-dialog .policy6003-editor .policy6003-notifications{display:flex;flex-direction:column;gap:16px}
+.action-dialog .policy6003-editor .policy6003-notifications legend{margin-bottom:12px}
+.action-dialog .policy6003-editor .policy6003-notifications .policy6003-recipients{margin:0}
+.action-dialog .policy6003-editor .policy6003-frequency{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;margin:0}
+.action-dialog .policy6003-editor .policy-readonly{margin:0;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.action-dialog .policy6003-editor .policy6003-frequency .form-error{color:var(--danger,#b42318);margin:0}
+
+.action-dialog .policy6003-editor .policy6003-rule-options{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(64px,auto);gap:8px 12px;margin-top:8px;overflow:visible}
+.action-dialog .policy6003-editor .policy6003-rule-option{padding:10px;min-width:0}
+.action-dialog .policy6003-editor .policy6003-rule-option small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Every dialog native scrollport uses the same overlay scrollbar contract. */
+[data-slot="dialog-content"] [data-dialog-scrollport],
+[data-slot="dialog-content"][data-dialog-scrollport]{scrollbar-width:none!important;scrollbar-gutter:auto!important}
+[data-dialog-scrollport]::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+.dialog-scrollbar-layer{position:absolute;inset:0;z-index:20;pointer-events:none;overflow:hidden;border-radius:inherit}
+.dialog-scrollbar{position:absolute;background:transparent;opacity:0;pointer-events:none;transition:opacity 180ms cubic-bezier(.23,1,.32,1)}
+.dialog-scrollbar[hidden]{display:none}
+.dialog-scrollbar[data-active=true]{opacity:1;transition-duration:0ms}
+.dialog-scroll-thumb{background:#808080;border-radius:999px;touch-action:none;user-select:none;pointer-events:none}
+.dialog-scrollbar[data-active=true]>.dialog-scroll-thumb{pointer-events:auto}
+[data-layer-covered=true]>.dialog-scrollbar-layer{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.dialog-scrollbar{transition:none}}
+@media(forced-colors:active){.dialog-scrollbar{opacity:1}.dialog-scroll-thumb{background:CanvasText;forced-color-adjust:none;pointer-events:auto}.overlay-scrollbar[data-state=hidden]{opacity:1;pointer-events:auto}}
+@media print{.dialog-scrollbar-layer{display:none}}
+
+/* Policy details follow the rule detail's open sections and aligned fields. */
+.strategy-redesign .warning-policy-detail .policy-heading{border:0}
+.warning-policy-detail .policy-heading>div{min-width:0}
+.warning-policy-detail .policy-identity{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.warning-policy-detail .policy-identity h2{overflow-wrap:anywhere}
+.strategy-redesign .warning-policy-detail .policy-section{padding:12px 24px;border:0}
+.strategy-redesign .warning-policy-detail .shared-policy-parameters{padding-top:4px}
+.strategy-redesign .warning-policy-detail .policy-section:last-child{padding-bottom:24px}
+.warning-policy-detail .policy-section-title{min-height:36px;margin-bottom:12px}
+.warning-policy-detail .policy-summary-fields dt{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.warning-policy-detail .policy-summary-fields .resource-hint{flex-shrink:0}
+.warning-policy-detail .policy-rule-count{margin-left:8px;color:var(--muted);font-size:12px;font-weight:400;white-space:nowrap}
+.warning-policy-detail .policy-rules-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px;line-height:1.7}
+.warning-policy-detail .policy-rules-table :is(th,td){padding:9px 12px;text-align:left;vertical-align:middle;border:0;overflow-wrap:anywhere}
+.warning-policy-detail .policy-rules-table th{background:var(--surface-subtle,#f7f8fa);color:var(--muted);font-weight:400}
+.warning-policy-detail .policy-rules-table th:first-child{width:34%;border-radius:6px 0 0 6px}
+.warning-policy-detail .policy-rules-table th:last-child{width:120px;border-radius:0 6px 6px 0}
+.warning-policy-detail .policy-rules-table td:first-child{border-radius:6px 0 0 6px}
+.warning-policy-detail .policy-rules-table td:last-child{border-radius:0 6px 6px 0}
+.warning-policy-detail .policy-rule-status{color:var(--muted);white-space:nowrap}
+.strategy-redesign .shared-policy-card-heading strong{overflow-wrap:anywhere;min-width:0}
+.strategy-redesign .shared-policy-card-heading .badge{flex-shrink:0}
+@media(max-width:650px){
+ .warning-policy-detail .indicator-config-grid{grid-template-columns:1fr}
+ .warning-policy-detail .policy-reference{gap:8px;padding:12px}
+ .warning-policy-detail .policy-reference-name{display:block}
+ .warning-policy-detail .policy-reference-name>span{display:block;white-space:normal}
+}
+
+@media(max-width:700px){
+ .action-dialog .policy6003-editor .policy6003-rule-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .action-dialog .policy6003-editor .policy6003-frequency{grid-template-columns:1fr}
+}
+
+/* Voice library edit count shares the heading row with its rule reference. */
+.modal-heading-with-aside>.voice-resource-header-count{display:flex;align-items:center;gap:8px;flex-shrink:0;margin:0;font-size:13px;line-height:1.7;font-weight:400}
+.voice-resource-header-count>span:last-child{color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Notification roles, repeat frequency and workflow share a single row. */
+.action-dialog .policy6003-editor .policy6003-notification-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.action-dialog .policy6003-editor .policy6003-notification-row>.policy6003-field>.config-label-with-info{height:24px;min-height:24px}
+.action-dialog .policy6003-editor .policy6003-recipient-select{display:flex;justify-content:space-between;gap:8px;width:100%;min-width:0;height:40px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface,#fff);font-size:13px;font-weight:400;box-shadow:none}
+.policy6003-recipient-select>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.policy6003-recipient-select>svg{flex-shrink:0;color:var(--muted);opacity:.5}
+.policy6003-recipient-options[data-slot=popover-content]{width:var(--radix-popover-trigger-width);max-height:var(--radix-popover-content-available-height);overflow:auto;padding:4px;border-radius:8px}
+.policy6003-recipient-option{display:flex;align-items:center;gap:8px;padding:10px 8px;border-radius:5px;font-size:13px;cursor:pointer}
+.policy6003-recipient-option:hover,.policy6003-recipient-option:focus-within{background:var(--surface-hover,#f5f5f5)}
+@media(max-width:700px){.action-dialog .policy6003-editor .policy6003-notification-row{grid-template-columns:1fr}}
+
+/* A strategy's rule preview is a single read-only dialog. */
+.modal[data-slot=dialog-content]:has(.rule-preview-content){height:auto;max-height:calc(100dvh - 48px);display:flex;flex-direction:column}
+.modal:has(.rule-preview-content)>header{padding:20px 24px 16px;flex-shrink:0;border:0}
+.modal:has(.rule-preview-content)>.modal-body{flex:0 1 auto;min-height:0;overflow:auto;padding:0 24px;overscroll-behavior:contain}
+.modal:has(.rule-preview-content)>.modal-actions{padding:20px 24px;flex-shrink:0;border:0}
+.rule-preview-content .rule-preview-section{padding:0;margin:0 0 24px}
+.rule-preview-content .rule-preview-section:last-child{margin-bottom:0}
+.rule-preview-content .policy-title-with-info{display:flex;align-items:center;gap:4px;margin:0 0 12px;font-size:15px;font-weight:600;line-height:1.6}
+.rule-preview-content .rule-condition-summary{margin:0}
+.rule-preview-content .rule-detail-fields{grid-template-columns:1fr}
+
+/* Compact policy cards retain the complete risk + six-character strategy label. */
+.action-dialog .policy6003-editor .policy6003-rule-option{display:grid;grid-template-columns:16px minmax(0,1fr);align-content:start;gap:4px 8px}
+.action-dialog .policy6003-editor .policy6003-rule-option>span{display:contents}
+.action-dialog .policy6003-editor .policy6003-rule-option strong{grid-column:2;min-width:0}
+.action-dialog .policy6003-editor .policy6003-rule-option small{grid-column:1/-1}
+
+.action-dialog .policy6003-editor .action-form-body{padding-top:4px;padding-bottom:12px}
+.action-dialog .policy6003-editor .policy-config-footer{padding-top:12px;padding-bottom:20px}
+
+/* Keep the policy name beside the action title, with a single compact header row. */
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor)>header{align-items:center;gap:16px;padding:20px 28px 16px}
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor)>header>div{display:flex;align-items:baseline;gap:12px;flex:1;min-width:0}
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor)>header h2{flex-shrink:0;margin:0;line-height:28px}
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor)>header .modal-description{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;line-height:20px;color:var(--muted);font-weight:400}
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor)>header>.icon-button{flex-shrink:0}

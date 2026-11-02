@@ -1,0 +1,53 @@
+.trigger { position:relative; flex-shrink:0; width:28px; height:32px; display:grid; place-items:center; padding:0; border:0; border-radius:var(--radius-control); background:transparent; color:var(--muted); }
+.trigger:hover, .trigger.selected { color:var(--accent-ink); background:var(--selection-bg); }
+.liveDot { position:absolute; right:1px; top:1px; width:7px; height:7px; border-radius:50%; background:var(--green); }
+.panel,.minimized { position:fixed; left:12px; bottom:12px; z-index:51; width:288px; max-width:calc(100vw - 32px); border:0; border-radius:var(--radius-panel); background:var(--surface); box-shadow:0 4px 24px rgb(32 37 43 / 10%); color:var(--ink); font-family:var(--font-body); font-size:13px; opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity 180ms ease,transform 240ms cubic-bezier(.32,.72,0,1),visibility 0s 240ms; pointer-events:none; }
+.panel[data-visible=true],.minimized[data-visible=true] { opacity:1; visibility:visible; transform:translateY(0); transition-delay:0s; pointer-events:auto; }
+.panel { --panel-block-padding:20px; --panel-inline-padding:16px; max-height:calc(100dvh - 90px); display:flex; flex-direction:column; overflow:hidden; }
+.header { display:flex; align-items:flex-start; gap:8px; padding:var(--panel-block-padding) var(--panel-inline-padding) 8px; background:var(--surface); }
+.heading { flex:1; min-width:0; }
+.heading h2 { margin:0; font-family:var(--font-heading); font-size:14px; font-weight:650; line-height:1.5; }
+.heading p { margin:5px 0 0; font-size:12px; color:var(--muted); }
+.headerActions { display:flex; flex-shrink:0; gap:2px; margin:-5px -6px 0 0; }
+.panel .iconButton,.minimized .iconButton { color:var(--muted); flex-shrink:0; width:30px; height:30px; min-height:30px; padding:0; border:0; box-shadow:none; }
+.body { padding:0 var(--panel-inline-padding) var(--panel-block-padding); overflow:auto; }
+.sourceContent { margin:0; height:auto; min-height:0; flex:none; display:flex; flex-direction:column; gap:16px; }
+.status { flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:28px; }
+.status>span { display:flex; align-items:center; }
+.status time { font-family:var(--font-data); font-variant-numeric:tabular-nums; color:var(--muted); font-size:14px; }
+.sourcePicker { height:68px; flex-shrink:0; display:flex; flex-direction:column; gap:8px; }
+.panel input[type=file] { display:none; }
+.sourcePicker label { font-size:12px; line-height:22px; color:var(--muted); }
+.panel .audioSelect { width:100%; min-height:38px; border:0; background:var(--surface-subtle); box-shadow:none; font-size:12px; }
+.panel .audioSelect:focus-visible { background:var(--selection-bg); outline:0; }
+.panel .primary { margin-top:4px; flex-shrink:0; width:100%; min-height:36px; height:36px; font-size:12px; gap:8px; border-radius:var(--radius-control); }
+.panel .hangup { background:var(--red); border-color:var(--red); color:white; }
+.panel .hangup:hover { background:#97232e; border-color:#97232e; }
+.error { margin:0; color:var(--red); line-height:1.6; font-size:12px; }
+.brand { gap:7px; padding-inline:0; }
+.brand > span { flex-shrink:0; }
+.brand > div { flex:1; min-width:0; }
+.brand b { font-size:16px; white-space:nowrap; }
+.brand small { white-space:nowrap; letter-spacing:0; }
+.trigger:focus-visible,.panel .iconButton:focus-visible,.minimized button:focus-visible { outline:0; background:var(--selection-bg); color:var(--accent-ink); }
+@media (max-width:760px) { .panel { left:12px; bottom:12px; max-width:calc(100vw - 24px); } }
+.panel .tabs[data-slot=tabs-list] { position:relative; isolation:isolate; border:0; box-shadow:none; width:100%; height:44px; display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:6px 0; background:transparent; }
+.panel .tabs [role=tab] { z-index:1; width:100%; min-height:32px; height:32px; padding:6px 10px; font-size:12px; font-weight:500; border:0; border-radius:8px; gap:7px; background:transparent; transition:color 160ms ease; }
+.panel .tabs [role=tab][data-state=active] { background:transparent; color:var(--accent-ink); box-shadow:none; }
+.tabIndicator { position:absolute; z-index:0; left:0; top:6px; width:calc((100% - 8px)/2); height:32px; border-radius:8px; background:var(--selection-bg); transform:translateX(0); transition:transform 220ms cubic-bezier(.32,.72,0,1); pointer-events:none; }
+.tabs[data-source=upload] .tabIndicator { transform:translateX(calc(100% + 8px)); }
+.dropzone { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; width:100%; height:68px; min-height:68px; flex-shrink:0; padding:10px; border:0; border-radius:8px; background:var(--surface-subtle); color:var(--muted); }
+.dropzone b { color:var(--ink); font-size:12px; line-height:18px; font-weight:500; }
+.dropzone small { font-size:10px; line-height:16px; }
+.dropzone:hover,.dropzone.dragging { background:var(--selection-bg); }
+.uploadedFile { display:flex; align-items:center; gap:10px; width:100%; height:68px; min-height:68px; padding:12px; border:0; border-radius:8px; background:var(--surface-subtle); }
+.fileName { flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:12px; font-weight:500; color:var(--ink); }
+.minimized { width:224px; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px; }
+.callSummary { display:flex; align-items:center; gap:8px; min-width:0; flex:1; }
+.callSummary>svg { flex:0 0 18px; }
+.callSummary b { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; font-weight:600; }
+.callSummary time { flex-shrink:0; font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; }
+.minimizedActions { display:flex; align-items:center; gap:4px; flex-shrink:0; }
+.minimized .endCall:not(:disabled) { color:var(--red); }
+.minimized .endCall:not(:disabled):is(:hover,:focus-visible) { color:var(--red); background:var(--status-danger-bg); }
+@media(prefers-reduced-motion:reduce) { .panel,.minimized,.tabIndicator,.panel .tabs [role=tab] { transition:none; transform:none; } .tabs[data-source=upload] .tabIndicator { transform:translateX(calc(100% + 8px)); } }

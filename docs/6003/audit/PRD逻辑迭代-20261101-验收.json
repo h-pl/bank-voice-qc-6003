@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Shanghai",
+  "basis": "docs/6003/PRD.txt",
+  "changedSourceFiles": [
+    "lib/call-triggers.ts",
+    "lib/call-alerts.ts",
+    "lib/configuration.ts"
+  ],
+  "unchangedVisualFileCount": 79,
+  "visualFilesUnchanged": true,
+  "baselineTests": 219,
+  "totalTestsPassed": 229,
+  "newRegressionTests": 10,
+  "failingBeforeFix": 9,
+  "typecheck": "passed",
+  "lint": "passed",
+  "productionBuild": "passed",
+  "browser": {
+    "resources": {
+      "rows": 12,
+      "rowHeights": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "desktopWidth": 1440,
+      "professionalDialogWidth": 1200,
+      "narrowViewport": 408,
+      "narrowDialogWidth": 384
+    },
+    "newEvidenceReopen": {
+      "alertStatus": "open",
+      "findingStatus": "candidate",
+      "retainedConclusionCount": 1,
+      "pendingEvidence": null
+    },
+    "liveReminderAlertStatus": "pending",
+    "identicalEvidenceAlertStatus": "closed",
+    "agentRestrictedRoute": "workorders"
+  },
+  "sourceHashes": {
+    "lib/call-triggers.ts": {
+      "before": "d6edfa723f3e771d0151d8c0e8ebf9681f1fbf01087231e188a0c8545d2d5b3d",
+      "after": "1af1f0959c1e16ed4496d6eaf5c18139283fe724aa081393829b8792d5a47852"
+    },
+    "lib/call-alerts.ts": {
+      "before": "ec20fd4859316ae79e96ecd41a94e9d1eff321bca61c8add285564a4aa184561",
+      "after": "264690c776f258af97d05cff45a3832778162f5a4509a00b5e3b70b895bc1d87"
+    },
+    "lib/configuration.ts": {
+      "before": "b9a354d0a16b91e6f9ade1d19e1b0fa80af5f4e56b28a2c9f55891a35f8ae112",
+      "after": "f54dfc210adda4b48af864cea9b263783748817c48c10985d6b8d746485acd29"
+    }
+  }
+}

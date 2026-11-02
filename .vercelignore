@@ -1,0 +1,17 @@
+# Local dependencies and generated build/preview output
+node_modules/
+.next/
+.next-*/
+*.tsbuildinfo
+
+# Local credentials and tool artifacts
+.env*
+.DS_Store
+.lark-*/
+draft_*/
+artifacts/
+playwright-report/
+.playwright-mcp/
+
+docs/
+scripts/

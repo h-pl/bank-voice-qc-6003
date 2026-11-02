@@ -1,0 +1,10 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["app", "components", "lib"],
+  "locale": "zh-CN",
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": ["Select/Listbox", "Date", "Form", "Scrollbar", "Toast", "CRUD"],
+  "ownership": { "Select/Listbox": "native", "Date": "native" },
+  "commands": { "unit": "pnpm test:workflow", "typecheck": "pnpm typecheck", "lint": "pnpm lint", "mvp": "pnpm verify:mvp", "build": "pnpm build" },
+  "requiredCommands": ["unit", "typecheck", "lint", "mvp", "build"]
+}

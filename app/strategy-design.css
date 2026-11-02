@@ -1,0 +1,887 @@
+/* Moss: quiet page surfaces, paired field rows and shared policy configuration. */
+@font-face{font-family:StrategySora;src:url('/fonts/strategy/Sora-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:StrategySora;src:url('/fonts/strategy/Sora-SemiBold.woff2') format('woff2');font-weight:500 700;font-display:swap}
+@font-face{font-family:StrategyMiSans;src:url('/fonts/strategy/MiSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:StrategyMiSans;src:url('/fonts/strategy/MiSans-Demibold.woff2') format('woff2');font-weight:500 700;font-display:swap}
+.strategy-nav,.strategy-redesign,.modal:has(.shared-policy-editor),.modal:has(.indicator-association-editor){font-family:var(--font-body);color:var(--ink)}
+.strategy-redesign :is(h2,h3,h4){font-family:var(--font-heading)}
+.strategy-nav .strategy-mode-toolbar{align-items:center;margin-bottom:0;border:0;padding-bottom:10px}
+.strategy-nav .tabs-root{flex:1}.strategy-nav .ui-tabs{border:0;margin:0}
+.strategy-page-intro{margin:18px 0 24px;color:#676767;font-size:14px;line-height:1.7}
+/* Match review-workspace2: persistent queue and detail surfaces. */
+.strategy-redesign.policy-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;height:calc(100dvh - 232px);min-height:440px;align-items:stretch}
+.strategy-redesign>.policy-list,.strategy-redesign>.policy-detail{border:0;border-radius:12px;background:var(--surface);box-shadow:none;min-height:0;min-width:0}
+.strategy-redesign>.policy-detail{display:block;max-width:none;margin:0;overflow-y:auto;scrollbar-gutter:stable;overscroll-behavior:contain}
+.strategy-redesign .policy-list{position:static;display:flex;flex-direction:column;overflow:hidden}
+.strategy-redesign .policy-list-actions{padding:16px 16px 0}.strategy-redesign .policy-list-actions .btn{width:100%}
+.strategy-redesign .policy-list-filters{padding:16px;display:grid;gap:12px;border:0;background:transparent}
+.strategy-redesign .policy-list-filters .search-box{width:100%;max-width:none;min-width:0}
+.strategy-redesign .policy-category{display:flex;align-items:center;gap:10px;min-width:0;margin:0}
+.strategy-redesign .policy-category>span{white-space:nowrap;font-size:12px}.strategy-redesign .policy-category>[data-slot=select-trigger]{flex:1;min-width:0}
+.strategy-redesign .policy-items{display:flex;flex-direction:column;gap:4px;padding:0 8px;flex:1;min-height:0;max-height:none;overflow-y:auto;scrollbar-gutter:auto}
+.strategy-redesign .policy-item{display:flex;flex-direction:column;flex-shrink:0;align-items:stretch;justify-content:flex-start;height:auto;min-height:0;padding:14px 12px;border:0;border-radius:8px;background:transparent;box-shadow:none;text-align:left;gap:0;white-space:normal;min-width:0}
+.strategy-redesign .policy-item.selected{background:var(--selection-bg);box-shadow:none}
+.strategy-redesign .policy-item.selected>strong{color:var(--accent-ink)}
+.strategy-redesign .policy-item:hover{background:var(--surface-subtle)}
+.strategy-redesign .policy-item.selected:hover{background:var(--selection-bg)}
+.strategy-redesign .policy-item:focus-visible{outline:2px solid var(--focus);outline-offset:-3px}
+.strategy-redesign .policy-item-top{font-size:12px;color:#777;display:flex;justify-content:space-between;gap:12px;margin:0 0 8px}
+.strategy-redesign .policy-item-top small{font-family:inherit;font-size:12px;color:inherit}
+.strategy-redesign .policy-item>strong{font-size:14px;line-height:1.65;font-weight:600;margin:0 0 8px;color:#252525}
+.rule-card-category{font-size:12px;color:#777;margin-bottom:8px}.rule-card-primary{font-size:14px;line-height:1.8;margin:2px 0 16px;color:#444}
+.rule-card-facts{display:grid;gap:6px;font-size:12px;color:#555;margin-bottom:10px;line-height:1.7}
+.rule-card-facts>span{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px;overflow-wrap:anywhere}.rule-card-facts small{font-size:12px;color:#888}
+.rule-card-bindings{display:grid;gap:6px;margin-bottom:10px;font-size:12px;line-height:1.65;color:#555}
+.rule-card-bindings>span{display:flex;justify-content:space-between;gap:12px}.rule-card-bindings>span>span:last-child{text-align:right;color:#777;overflow-wrap:anywhere}.rule-card-bindings>small{color:#888;font-size:12px}
+.rule-card-footer{margin-top:2px;border:0;padding-top:4px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#777}
+.rule-card-footer>span:first-child{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.rule-card-footer>span:last-child{display:none}.rule-card-footer [data-slot=badge]{font-size:11px}
+.strategy-redesign .policy-list-count{background:transparent;border:0;padding:12px 16px;font-size:12px;flex-shrink:0;margin:0}.strategy-redesign .policy-list-count>span{font-size:12px}
+.strategy-redesign .policy-heading{padding:22px 24px 16px;position:static;gap:16px}.strategy-redesign .policy-heading h2{font-size:21px;line-height:1.5}.strategy-redesign .policy-heading-status{margin-top:12px}
+.strategy-redesign .policy-section{padding:24px;background:transparent;border-color:#e9e9e9}.strategy-redesign .policy-section h3{font-size:15px}.strategy-redesign .policy-version-summary{padding-inline:24px;color:#777}
+.strategy-redesign .indicator-ownership{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:20px}.strategy-redesign .indicator-ownership>div:last-child{grid-column:auto}
+.strategy-redesign .policy-reference{border:0;border-radius:8px;background:#f7f7f6;padding:18px 20px}.strategy-redesign .indicator-resource-caption{padding-inline:20px}
+.strategy-redesign .binding-read{gap:0}.binding-read-head{display:grid;grid-template-columns:180px 1fr;padding:12px 16px;font-size:12px;background:#f7f7f6;color:#777;border-radius:8px 8px 0 0}
+.strategy-redesign .binding-read-row{display:grid;grid-template-columns:164px minmax(0,1fr) auto;align-items:start;gap:16px;border:0;border-bottom:1px solid #eee;border-radius:0;padding:20px 16px;font-size:14px}
+.binding-feature{display:grid;gap:8px}.binding-feature small,.binding-policy small{font-size:12px;color:#777;line-height:1.8}.binding-policy-name{display:flex;align-items:center;gap:10px}.binding-policy-name>span{font-size:12px;color:#888}.binding-policy p{font-size:13px;color:#666;line-height:1.8;margin:6px 0}
+.strategy-redesign .configuration-read-groups{gap:0}.strategy-redesign .configuration-read-groups>section{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid #eee}.strategy-redesign .configuration-read-groups h4{color:#333;font-size:15px;margin:0}.strategy-redesign .indicator-config-grid{margin:0;gap:20px 32px}.strategy-redesign .indicator-config-grid dt{font-size:12px}.strategy-redesign .indicator-config-grid dd{font-size:14px}
+.modal[data-slot=dialog-content]:has(.shared-policy-editor),.modal[data-slot=dialog-content]:has(.indicator-association-editor){width:min(800px,calc(100vw - 48px));max-width:800px;border-radius:16px}
+.shared-policy-editor .action-form-body,.indicator-association-editor .action-form-body{padding:0 28px 24px}
+.shared-policy-editor .editor-intro,.indicator-association-editor .editor-intro{font-size:13px;color:#777;line-height:1.8;margin:0 0 24px}
+.shared-policy-editor .configuration-fieldset,.indicator-association-editor .configuration-fieldset{margin:24px 0 0;padding:18px 0 0;border-color:#e8e8e8}
+.shared-policy-editor .configuration-fieldset legend,.indicator-association-editor .configuration-fieldset legend{font-size:16px;font-weight:600}
+.shared-policy-editor .configuration-fieldset>p{font-size:12px;margin:0 0 8px}
+.shared-policy-editor .indicator-config-form,.indicator-association-editor .indicator-config-form{gap:20px 24px;margin:12px 0 18px}
+.shared-policy-editor .config-field,.indicator-association-editor .config-field{gap:8px;font-size:14px}
+.shared-policy-editor .config-field>small{font-size:12px}
+.shared-policy-editor .config-field:has(.config-checkboxes){grid-column:1/-1}
+.shared-policy-editor :is(input,textarea,[data-slot=select-trigger]),.indicator-association-editor :is(input,textarea,[data-slot=select-trigger]){font-family:inherit;font-size:14px;min-height:40px}
+.shared-policy-editor .editor-reason,.indicator-association-editor label:has(textarea){border-top:1px solid #eee;padding-top:24px;margin-top:24px;font-size:14px}
+.indicator-association-editor .binding-editor-row{display:grid;grid-template-columns:1fr;gap:10px}.indicator-association-editor .binding-editor-row>label{font-size:12px;color:#777;margin:0}.indicator-association-editor .binding-editor-row>.indicator-policy-actions{margin-top:0}
+.linked-policy-preview{background:#f7f7f6;padding:14px 16px;border-radius:8px;margin:12px 0 0;font-size:13px;line-height:1.8}.linked-policy-preview>span{display:block;color:#888;font-size:12px;margin-bottom:6px}.linked-policy-preview p{margin:4px 0;color:#555}
+@media(max-width:760px){.strategy-redesign .policy-items{grid-template-columns:1fr;gap:16px}.strategy-redesign .policy-item{padding:20px;min-height:0}.strategy-redesign .policy-category{width:100%;min-width:0}.strategy-redesign .policy-list-filters .search-box{max-width:none}.strategy-redesign .policy-heading{padding-top:20px;gap:20px}.strategy-redesign .indicator-ownership{grid-template-columns:1fr}.binding-read-head{display:none}.strategy-redesign .binding-read-row{grid-template-columns:1fr;gap:10px;padding:20px 0}.strategy-redesign .binding-read-row>.btn{justify-self:start}.strategy-redesign .configuration-read-groups>section{grid-template-columns:1fr;gap:16px}.strategy-redesign .policy-heading h2{font-size:24px}.shared-policy-editor .indicator-config-form,.indicator-association-editor .indicator-config-form{grid-template-columns:1fr}.shared-policy-editor .action-form-body,.indicator-association-editor .action-form-body{padding-inline:20px}.modal[data-slot=dialog-content]:has(.shared-policy-editor),.modal[data-slot=dialog-content]:has(.indicator-association-editor){width:calc(100vw - 24px)}.strategy-nav .strategy-mode-toolbar{gap:8px}.strategy-nav .strategy-mode-toolbar>.btn{font-size:12px}}
+
+
+.strategy-nav .ui-tabs [data-slot=tabs-trigger][data-state=active]{background:var(--selection-bg);color:var(--accent-ink);box-shadow:none}
+.strategy-nav .ui-tabs [data-slot=tabs-trigger]::after{background:transparent}
+.strategy-redesign .policy-mobile-back{display:none;padding:12px 16px;border-bottom:1px solid #eee}
+.strategy-redesign .policy-detail:has(>.detail-backbar)>.policy-mobile-back{display:none}
+.indicator-association-editor .binding-editor-row>.indicator-config-form:empty{display:none}
+
+/* Embedded rule dialogs keep their existing single-detail contract. */
+.strategy-redesign.policy-full-detail{display:block;height:auto;min-height:0}
+.strategy-redesign.policy-full-detail>.policy-detail{display:block;height:auto;overflow:visible}
+@media(min-width:851px) and (max-width:1250px){
+ .strategy-redesign.policy-layout:not(.policy-full-detail){grid-template-columns:230px minmax(0,1fr)}
+ .strategy-redesign .indicator-ownership{grid-template-columns:1fr;gap:14px}
+ .strategy-redesign .configuration-read-groups>section{grid-template-columns:1fr;gap:14px}
+ .strategy-redesign .binding-read-row{grid-template-columns:120px minmax(0,1fr);gap:12px}
+ .strategy-redesign .binding-read-row>.btn{grid-column:2;justify-self:start}
+ .strategy-redesign .binding-read-head{grid-template-columns:136px minmax(0,1fr)}
+}
+@media(max-width:850px){
+ .strategy-redesign.policy-layout{display:block;height:auto;min-height:0}
+ .strategy-redesign:not(.has-selection):not(.policy-full-detail)>.policy-detail{display:none}
+ .strategy-redesign.has-selection>.policy-list{display:none}
+ .strategy-redesign.has-selection>.policy-detail{display:block;overflow:visible}
+ .strategy-redesign .policy-items{max-height:none;overflow:visible;gap:4px}
+ .strategy-redesign .policy-list{overflow:visible}
+ .strategy-redesign .policy-mobile-back{display:block}
+ .strategy-redesign.policy-full-detail .policy-mobile-back{display:none}
+ .strategy-redesign .policy-heading,.strategy-redesign .policy-section{padding:20px 16px}
+ .strategy-redesign .policy-version-summary{padding-inline:16px}
+ .strategy-redesign .indicator-ownership{grid-template-columns:1fr}
+ .strategy-redesign .configuration-read-groups>section{grid-template-columns:1fr}
+ .strategy-redesign .binding-read-head{display:none}
+ .strategy-redesign .binding-read-row{grid-template-columns:1fr;padding-inline:0}
+}
+
+.strategy-redesign .policy-version-picker>span{white-space:nowrap}
+
+/* Screenshot baseline: tabs, shared toolbar, then independent work surfaces. */
+.strategy-nav .ui-tabs [data-slot=tabs-trigger]{min-height:36px;padding:8px 12px}
+.strategy-filters{display:flex;align-items:center;gap:12px;padding:12px 0 18px;min-width:0}
+.strategy-filters .search-box{width:360px;flex:0 1 360px;min-width:180px;height:40px;background:var(--surface)}
+.strategy-filters .search-box input{font-size:13px;width:100%}
+.strategy-filters .policy-category{display:flex;align-items:center;gap:10px;margin:0;min-width:0}
+.strategy-filters .policy-category>span{display:none}
+.strategy-filters .policy-category>[data-slot=select-trigger]{min-width:140px;height:40px}
+.strategy-filter-actions{display:flex;align-items:center;gap:12px;margin-left:auto}
+.strategy-filter-actions>span{font-size:12px;color:var(--muted);white-space:nowrap}
+.strategy-filter-actions .btn{height:40px}
+.strategy-redesign .policy-queue-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 14px;flex-shrink:0;font-size:14px}
+.strategy-redesign .policy-queue-heading>span{font-size:11px;color:var(--muted)}
+.strategy-redesign .policy-queue-end{margin:0;padding:18px 8px;text-align:center;font-size:12px;color:var(--muted);flex-shrink:0}
+.strategy-redesign .policy-item-top{font-family:var(--font-data);font-size:11px}
+.strategy-redesign .policy-section{border:0}
+.strategy-redesign .policy-section+.policy-section{padding-top:12px}
+.strategy-redesign .policy-version-summary{background:transparent;font-size:12px}
+.strategy-redesign .indicator-ownership{background:transparent;border:0;padding:0}
+.strategy-redesign .policy-reference{background:var(--surface-subtle)}
+@media(min-width:1600px){.strategy-redesign.policy-layout:not(.policy-full-detail){grid-template-columns:264px minmax(0,1fr)}}
+@media(max-width:850px){
+ .strategy-filters{flex-wrap:wrap}
+ .strategy-filters .search-box{flex:1 1 100%;width:100%;min-width:0}
+ .strategy-filters .policy-category>[data-slot=select-trigger]{min-width:120px}
+ .strategy-filter-actions{flex-wrap:wrap;gap:8px}
+ .strategy-redesign .policy-item{padding:14px 12px}
+ .strategy-redesign .policy-heading h2{font-size:21px}
+}
+
+.strategy-nav .ui-tabs{padding:0;height:36px}
+.strategy-nav .strategy-mode-toolbar>.btn{height:36px;min-height:36px}
+@media(max-width:700px){.strategy-filters .search-box,.strategy-filters .policy-category>[data-slot=select-trigger],.strategy-filter-actions .btn{height:44px}}
+
+/* Indicator cards: identity, useful context, active associations, exceptions. */
+.strategy-redesign .indicator-rule-card { gap: 0; padding: 16px 12px; }
+.indicator-rule-card .indicator-card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.indicator-rule-card .indicator-card-heading .indicator-card-indicator { flex-shrink: 0; max-width: 45%; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,.04); color: var(--muted); font-size: 11px; line-height: 1.65; font-weight: 400; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+.indicator-rule-card .indicator-card-heading strong { min-width: 0; font-size: 15px; line-height: 1.55; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.indicator-rule-card.selected .indicator-card-heading strong { color: var(--accent-ink); }
+.indicator-rule-card .indicator-card-field { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 8px; font-size: 12px; line-height: 1.75; color: var(--text-secondary, #555); overflow-wrap: anywhere; }
+.indicator-rule-card .indicator-card-label { color: var(--muted); }
+.indicator-rule-card .indicator-card-alerts { margin-top: 8px; }
+.indicator-rule-card .indicator-card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.indicator-rule-card .indicator-card-footer [data-slot=badge] { font-size: 11px; }
+
+.indicator-rule-card .indicator-card-alert-summary { display: block; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+
+/* Rule details explain the check before resources and warning decisions. */
+.rule-context{display:flex;flex-wrap:wrap;gap:12px 32px;margin:16px 0;color:var(--text-secondary,#555);font-size:13px}
+.rule-context>div{display:flex;gap:12px}.rule-context dt,.rule-explanation dt{color:var(--muted)}
+.rule-context dd,.rule-explanation dd{margin:0;min-width:0}
+.rule-check-list{padding-left:22px;margin:18px 0;font-size:14px;line-height:1.9}
+.rule-check-list li+li{margin-top:5px}
+.rule-explanation{display:grid;gap:12px;margin:18px 0 0;font-size:13px;line-height:1.8}
+.rule-explanation>div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px}
+.rule-peer-note{font-size:12px;color:var(--muted);line-height:1.8;margin:18px 0 0}
+.rule-basis{padding:16px 0}.rule-basis+.rule-basis{border-top:1px solid var(--line,#eee)}
+.rule-basis-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.rule-basis-heading strong{font-size:14px}.rule-basis-heading strong span{font-size:12px;font-weight:400;color:var(--muted);margin-left:6px}
+.rule-basis-heading p{font-size:12px;line-height:1.8;color:var(--muted);margin:6px 0 0}
+.rule-basis-actions{display:flex;flex-wrap:wrap;gap:8px;flex-shrink:0}
+.rule-basis-entries{display:grid;gap:14px;margin-top:18px;padding:16px 20px;background:var(--surface-subtle,#f7f8fa);border-radius:8px}
+.rule-basis-entries>div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;font-size:13px;line-height:1.8}
+.rule-basis-entries strong{font-weight:500}.rule-basis-entries p{margin:0}
+.rule-warning-intro{font-size:13px;color:var(--muted);line-height:1.8;margin:0 0 16px}
+.rule-warning-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px}
+.rule-warning-footer p{margin:0}.rule-warning-footer .btn{flex-shrink:0}
+@media(max-width:850px){.rule-basis-heading,.rule-warning-footer{flex-direction:column}.rule-basis-entries>div{grid-template-columns:1fr;gap:4px}.rule-explanation>div{gap:12px}.rule-basis-entries{padding:14px}}
+
+/* Both association views read the same versioned rule bindings. */
+.policy-reference-count{margin-left:8px;color:var(--muted);font-size:12px;font-weight:400}
+.policy-association-empty{padding:18px 20px;background:var(--surface-subtle,#f7f8fa);border-radius:8px}
+.policy-association-empty>strong{font-size:14px;font-weight:500}
+.policy-association-empty>p,.policy-reference-info>p{font-size:13px;line-height:1.8;color:var(--muted);margin:6px 0}
+.policy-association-empty>.btn{margin-top:8px}
+.policy-reference-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.policy-reference-row+.policy-reference-row{border-top:1px solid var(--line,#e5e5e5)}
+.policy-reference-info{min-width:0;overflow-wrap:anywhere}
+.policy-reference-name{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px}
+.policy-reference-name strong{font-size:14px;font-weight:500}
+.policy-reference-name>span,.policy-reference-info>small{font-size:12px;color:var(--muted)}
+.policy-reference-row>.btn{flex-shrink:0}
+.policy-reference-draft{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+@media(max-width:700px){.policy-reference-row{align-items:flex-start;gap:12px}.policy-reference-count{display:block;margin:4px 0 0}}
+
+/* In-place associations: choose features once, stay on the policy page. */
+.association-selection-summary{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:14px 0 4px;font-size:12px;color:var(--muted)}
+.association-selection-summary>[role=status]{color:var(--ink);font-weight:500}
+.association-rule-groups{display:grid;gap:12px}
+.association-rule-group{min-width:0;margin:0;padding:16px;border:1px solid var(--line,#e5e5e5);border-radius:8px}
+.association-rule-group legend{padding:0 6px;font-size:14px;font-weight:600;max-width:100%;overflow-wrap:anywhere}
+.association-rule-group legend>span{margin-left:10px;font-size:12px;font-weight:400;color:var(--muted)}
+.association-feature-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+.association-feature{display:flex;align-items:flex-start;gap:10px;min-width:0}
+.association-feature>[data-slot=checkbox]{margin-top:4px;flex-shrink:0}
+.association-feature label{cursor:pointer;display:flex;flex-direction:column;gap:3px;font-size:14px;line-height:1.7;overflow-wrap:anywhere;min-width:0}
+.association-feature label>small{font-size:12px;color:var(--muted);font-weight:400}
+.association-feature.is-unavailable{color:var(--muted)}
+.association-form-footer{display:flex!important;flex-direction:column;align-items:stretch!important;gap:10px}
+.association-form-footer>div{display:flex;justify-content:flex-end;gap:10px}
+.association-form-footer>p{margin:0;font-size:13px}
+.association-publish-actions{flex-shrink:0}
+@media(max-width:700px){.association-feature-options{grid-template-columns:1fr;gap:12px}.policy-reference-row:has(.association-publish-actions){flex-direction:column;align-items:stretch}.association-publish-actions{align-self:flex-end}.association-rule-group{padding:12px}.association-selection-summary{line-height:1.8}}
+
+.action-dialog .policy-association-form .association-rule-group{margin:0;padding:12px 16px 16px;border:1px solid var(--line,#e5e5e5);border-radius:8px}
+.action-dialog .policy-association-form .association-rule-group legend{padding:0 6px;font-size:14px}
+.action-dialog .policy-association-form .association-feature label{margin:0;font-weight:400;line-height:1.7}
+.action-dialog .policy-association-form .association-feature label>span{font-weight:500}
+.action-dialog .policy-association-form .association-selection-summary{margin-bottom:12px}
+.action-dialog .policy-association-form .editor-intro{margin-bottom:12px}
+
+/* New policies select indicator, rule and feature within the creation form. */
+.new-policy-scope{margin-top:24px;padding-top:20px;border-top:1px solid var(--line,#e5e5e5)}
+.new-policy-scope>h3{font-size:16px;margin:0 0 16px}.new-policy-scope>h3>span{font-size:12px;color:var(--muted);font-weight:400;margin-left:8px}
+.policy-scope-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:16px}
+.action-dialog .policy-scope-filters>label{margin:0;font-size:13px;display:grid;gap:8px}
+.policy-scope-filters .search-box{min-width:0;width:100%}
+.policy-scope-prompt{padding:14px 16px;background:var(--surface-subtle,#f7f8fa);border-radius:6px;font-size:13px;color:var(--muted);line-height:1.8;margin:0}
+.policy-scope-selected{display:grid;gap:6px;margin-bottom:16px;padding:10px 12px;background:var(--surface-subtle,#f7f8fa);border-radius:6px}
+.policy-scope-selected>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px;line-height:1.8}
+.policy-scope-selected>div>span{min-width:0;overflow-wrap:anywhere}.policy-scope-selected b{font-weight:500}
+.policy-scope-selected button{font-size:12px;flex-shrink:0;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;border:0;background:none;padding:3px 4px;cursor:pointer}
+.policy-scope-selected button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.action-dialog .shared-policy-editor .association-rule-group{min-width:0;margin:0;padding:12px 16px 16px;border:1px solid var(--line,#e5e5e5);border-radius:8px}
+.action-dialog .shared-policy-editor .association-rule-group legend{padding:0 6px;font-size:14px}
+.action-dialog .shared-policy-editor .association-feature label{margin:0;font-size:14px;font-weight:400;line-height:1.7}
+.action-dialog .shared-policy-editor .association-feature label>span{font-weight:500}
+.action-dialog .shared-policy-editor .association-selection-summary{margin-bottom:12px}
+.scope-rule-warning{font-size:12px;color:var(--muted);line-height:1.7;margin:4px 0 12px}
+.scope-update-notice{font-size:13px;line-height:1.8;padding:12px;background:var(--accent-soft,#fff3e9);margin-top:14px;border-radius:6px}
+.scope-update-notice>p{margin:0 0 8px}.scope-update-notice>label{display:flex;align-items:center;gap:8px}
+.policy-config-footer{display:flex!important;flex-direction:column;align-items:stretch!important;gap:10px}
+.policy-config-footer>div{display:flex;justify-content:flex-end;gap:10px}.policy-config-footer>p{margin:0;font-size:13px}
+.pending-policy-associations{padding:14px 16px;margin-bottom:16px;background:var(--surface-subtle,#f7f8fa);border-radius:8px;font-size:13px}
+.pending-policy-associations h4{margin:0 0 12px;font-size:14px}.pending-policy-associations>div+div{margin-top:12px}
+.pending-policy-associations>div>div{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.pending-policy-associations p{margin:6px 0;line-height:1.8}
+.pending-policy-scope>.btn{margin-top:12px}.new-policy-publish-scope{margin:18px 0}
+@media(max-width:700px){.policy-scope-filters{grid-template-columns:1fr;gap:12px}.policy-scope-selected>div{align-items:flex-start}.action-dialog .shared-policy-editor .association-rule-group{padding:12px}}
+
+/* Indicator details and association editors share label/value alignment. */
+.rule-detail-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;margin:0;font-size:13px;line-height:1.8}
+.rule-detail-fields>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:baseline;min-width:0}
+.rule-detail-fields dt{color:var(--muted);font-weight:400}
+.rule-detail-fields dd{margin:0;min-width:0;overflow-wrap:anywhere;color:var(--ink)}
+.rule-detail-wide{grid-column:1/-1}
+.rule-detail-checks{margin:0;padding-left:18px;list-style:disc}
+.rule-detail-checks li+li{margin-top:6px}
+.rule-detail-checks li:only-child{list-style:none;margin-left:-18px}
+.rule-basis-heading>.rule-detail-fields{flex:1;min-width:0}
+.rule-basis-heading .rule-detail-fields strong{font-size:13px;font-weight:500}
+.strategy-redesign .indicator-resource-fields .rule-basis{padding:0}
+.strategy-redesign .indicator-resource-fields .rule-basis+.rule-basis{margin-top:20px;padding-top:20px}
+.binding-policy{min-width:0}
+.binding-policy-name{flex-wrap:wrap}
+.binding-policy-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;margin:14px 0 0;font-size:13px;line-height:1.8}
+.binding-policy-fields>div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:baseline;min-width:0}
+.binding-policy-fields>div:first-child,.binding-policy-fields>div:nth-child(2){grid-column:1/-1}
+.binding-policy-fields dt{color:var(--muted);font-weight:400}
+.binding-policy-fields dd{margin:0;color:var(--ink);overflow-wrap:anywhere}
+.binding-mobile-label{display:none}
+.linked-policy-preview .binding-policy-fields{margin-top:8px}
+@media(min-width:851px) and (max-width:1250px){
+ .binding-policy-fields{grid-template-columns:1fr}
+ .rule-basis-heading{flex-wrap:wrap}
+ .rule-basis-heading>.rule-detail-fields{flex-basis:100%}
+}
+@media(max-width:850px){
+ .rule-basis-heading>.rule-detail-fields{width:100%}
+ .binding-mobile-label{display:block;color:var(--muted);font-size:12px;font-weight:400}
+ .strategy-redesign .binding-read-row>.btn{grid-column:1;justify-self:start}
+ .binding-policy-name{margin-top:4px}
+}
+@media(max-width:560px){
+ .rule-detail-fields,.binding-policy-fields{grid-template-columns:1fr;gap:12px}
+ .rule-detail-fields>div{grid-template-columns:64px minmax(0,1fr);gap:12px}
+}
+
+/* Configuration task: local previews and direct, validated saves. Version UI is P2. */
+.strategy-redesign .binding-read-row{grid-template-columns:164px minmax(0,1fr)}
+.binding-policy-preview .binding-policy-fields{grid-template-columns:1fr;gap:8px;margin-top:12px}
+.binding-policy-preview .binding-policy-fields>div{grid-column:auto;grid-template-columns:88px minmax(0,1fr)}
+/* Button-triggered dialogs keep the rule page and its scroll position stable. */
+.rule-section-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-left:auto;min-width:0}
+.rule-section-actions .rule-basis-actions{align-items:center;justify-content:flex-end;flex-shrink:1}
+.binding-policy-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.binding-policy-heading>strong{min-width:0;overflow-wrap:anywhere}
+.binding-policy-heading>.policy-details-button{margin:0;flex-shrink:0}
+@media(max-width:560px){.binding-policy-heading{flex-wrap:wrap;gap:8px}.binding-policy-heading>.policy-details-button{margin-left:auto}.rule-section-actions{max-width:100%}}
+.warning-dialog-form,.resource-dialog-form{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.warning-dialog-body,.resource-dialog-body{min-height:0;overflow:auto;overscroll-behavior:contain;padding:4px 28px 16px}
+.warning-dialog-body>.subtle{margin-bottom:20px;line-height:1.8}
+.warning-dialog-form .binding-editor-row{margin:0 0 20px;padding:20px;border:1px solid var(--line);border-radius:8px;min-width:0}
+.warning-dialog-form .binding-editor-row legend{font-size:14px;font-weight:500;padding:0 6px}
+.binding-select-row{display:flex;gap:16px;align-items:end}
+.binding-select-row>div{flex:1;min-width:0;display:grid;gap:8px}
+.binding-select-row label{font-size:13px;color:var(--muted)}
+.warning-dialog-form .indicator-policy-actions{margin-top:12px}
+.warning-dialog-footer{display:flex;gap:12px;justify-content:flex-end;align-items:center;flex-wrap:wrap;padding:18px 28px 24px;flex-shrink:0}
+.warning-dialog-footer>span,.warning-dialog-footer>p{margin-right:auto}
+.modal[data-slot="dialog-content"].action-dialog:has(>.warning-dialog-form),.modal[data-slot="dialog-content"].action-dialog:has(>.resource-dialog-form){width:min(880px,calc(100vw - 48px));max-width:880px}
+.resource-dialog-impact{padding:12px 16px;margin-bottom:20px;font-size:13px;background:var(--surface-subtle,#f8f8f8);border-radius:8px}
+.resource-dialog-impact p{margin:6px 0 0;line-height:1.8;color:var(--muted)}
+.resource-dialog-body>.search-box{width:100%;margin-bottom:20px}
+.resource-dialog-scope{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:13px}
+.resource-dialog-footer{padding:18px 28px 24px;background:var(--surface,#fff);flex-shrink:0}
+.resource-dialog-footer>div{display:flex;justify-content:flex-end;gap:12px;align-items:center;flex-wrap:wrap}
+.resource-dialog-footer .subtle{margin-right:auto}
+.resource-dialog-footer>p{margin:0 0 12px}
+.resource-dialog-body .structured-record{min-width:0}
+.resource-dialog-body .indicator-config-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+.resource-dialog-body .indicator-config-form label{min-width:0}
+@media(max-width:760px){
+ .strategy-redesign .binding-read-row{grid-template-columns:1fr}
+ .warning-dialog-form .binding-editor-row{padding:14px}
+ .binding-select-row{flex-wrap:wrap}.binding-select-row>div{flex-basis:100%}
+ .warning-dialog-footer>span,.warning-dialog-footer>p{flex-basis:100%;margin:0}
+ .modal[data-slot="dialog-content"].action-dialog:has(>.warning-dialog-form),.modal[data-slot="dialog-content"].action-dialog:has(>.resource-dialog-form){width:calc(100vw - 24px)}
+ .warning-dialog-body,.resource-dialog-body{padding:4px 20px 8px}
+ .warning-dialog-footer,.resource-dialog-footer{padding:16px 20px 20px}
+ .resource-dialog-body .indicator-config-form{grid-template-columns:1fr}
+ .resource-dialog-footer .subtle{flex-basis:100%}
+}
+
+.warning-dialog-body .binding-config-label{margin:20px 0 8px;font-size:13px;font-weight:500;color:var(--ink)}
+
+/* Reviewed TXT layout: shared parameters before dependent rules. */
+.strategy-redesign .shared-policy-config-read .configuration-read-groups{gap:0}
+.strategy-redesign .shared-policy-config-read .configuration-read-groups>section{display:block;padding:0;border:0}
+.strategy-redesign .shared-policy-config-read .configuration-read-groups>section+section{margin-top:24px}
+.strategy-redesign .shared-policy-config-read .configuration-read-groups h4{font-size:13px;margin:0 0 12px;font-weight:600}
+.strategy-redesign .shared-policy-config-read .indicator-config-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
+.shared-policy-config-read .indicator-config-grid>div{padding:0;border:0;display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:baseline;min-width:0}
+.strategy-redesign .shared-policy-config-read .indicator-config-grid dt{margin:0;font-size:13px;line-height:1.8}
+.strategy-redesign .shared-policy-config-read .indicator-config-grid dd{font-weight:400;font-size:13px;line-height:1.8;margin:0;overflow-wrap:anywhere}
+.shared-policy-reference-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr) minmax(0,1.5fr);gap:20px;align-items:start;padding:14px 16px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.8}
+.shared-policy-reference-row:last-child{border-bottom:0}
+.shared-policy-reference-row>[role=cell]{min-width:0;overflow-wrap:anywhere}
+.shared-policy-reference-head{background:var(--surface-subtle);border:0;border-radius:8px 8px 0 0;color:var(--muted);font-size:12px}
+.shared-policy-reference-row strong{font-weight:500}
+.strategy-redesign .shared-policy-card-facts{margin:2px 0 0;gap:7px}
+@media(max-width:1100px){.strategy-redesign .shared-policy-config-read .indicator-config-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+ .shared-policy-reference-head{display:none}
+ .shared-policy-reference-row{grid-template-columns:1fr;gap:6px;padding:16px 0}
+ .shared-policy-reference-row>[role=cell]{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px}
+ .shared-policy-reference-row>[role=cell]::before{content:attr(data-label);color:var(--muted);font-weight:400}
+ .shared-policy-config-read .indicator-config-grid>div{grid-template-columns:96px minmax(0,1fr)}
+}
+
+/* Secondary dialogs share reading order, compact fields and fixed actions. */
+.dialog-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px}
+.dialog-section-heading h3{font-size:15px;margin:0}.dialog-section-heading>span{font-size:12px;color:var(--muted)}
+.dialog-impact-note{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 24px}
+.resource-dialog-references{margin-top:28px}.resource-dialog-references ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:13px}
+.resource-dialog-settings{margin-top:24px}
+.resource-dialog-body .structured-record{border:0;padding:0;margin:24px 0 0}
+.structured-record-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
+.structured-record-heading h4{font-size:14px;margin:0}
+.resource-dialog-body .indicator-config-form{gap:20px 24px;margin:0}
+.resource-dialog-body .indicator-config-form>label{display:flex;flex-direction:column;gap:8px;margin:0;font-size:13px}
+.resource-dialog-body .resource-import-heading p{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.resource-dialog-body .structured-resource-table{max-width:100%;overflow-x:auto}
+.resource-dialog-body .structured-resource-table tr:last-child{border-bottom:0}
+.policy-parameter-groups{display:grid;gap:24px}
+.policy-parameter-groups h3{font-size:14px;margin:0 0 14px}
+.policy-parameter-groups .rule-detail-fields>div{grid-template-columns:112px minmax(0,1fr);gap:12px}
+.modal:has(.policy-parameter-groups):not(.action-dialog){width:min(880px,calc(100vw - 48px));max-width:880px}
+.shared-policy-editor .configuration-fieldset{padding:0;border:0;margin:24px 0 0}
+.shared-policy-editor .configuration-fieldset legend{margin-bottom:8px;padding:0;font-size:15px}
+.shared-policy-editor .indicator-config-form{gap:20px 24px;margin:16px 0 0}
+.shared-policy-editor .editor-intro{margin:0 0 24px}
+@media(max-width:760px){
+ .resource-dialog-body .indicator-config-form,.policy-parameter-groups .rule-detail-fields{grid-template-columns:1fr}
+ .modal:has(.policy-parameter-groups):not(.action-dialog){width:calc(100vw - 24px)}
+ .policy-parameter-groups .rule-detail-fields>div{grid-template-columns:96px minmax(0,1fr)}
+}
+.resource-dialog-body .structured-resource-table tbody tr:last-child>td{border-bottom:0}
+.action-dialog .shared-policy-editor .config-field>label,.action-dialog .shared-policy-editor .config-checkboxes label{margin:0}
+
+/* Shared policy forms: one reading order and a flat association list. */
+.modal[data-slot=dialog-content]:has(.policy-association-form){width:min(800px,calc(100vw - 48px));max-width:800px}
+.action-dialog .shared-policy-editor .action-form-body,.action-dialog .policy-association-form .action-form-body{padding-bottom:20px}
+.action-dialog .shared-policy-editor .policy-name-field{margin:4px 0 24px;display:block}
+.action-dialog .shared-policy-editor .configuration-fieldset{margin:0 0 28px;padding:0;border:0}
+.action-dialog .shared-policy-editor .configuration-fieldset legend{margin:0 0 12px}
+.action-dialog .shared-policy-editor .configuration-fieldset>p{margin:0 0 12px;line-height:1.7}
+.action-dialog .shared-policy-editor .indicator-config-form{margin:0;gap:18px 24px}
+.policy-fixed-value{display:flex;align-items:center;min-height:40px;font-size:14px;color:var(--ink)}
+.action-dialog .new-policy-scope{border:0;padding:0;margin:8px 0 0}
+.action-dialog .policy-save-impact{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+.policy-view-context{font-size:13px;color:var(--muted);line-height:1.8;margin:0 0 24px}
+.action-dialog .association-selection-summary{margin:16px 0 0;padding:10px 12px;background:var(--surface-subtle);border-radius:6px;align-items:center}
+.action-dialog .association-selected-filter{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;font-weight:400;cursor:pointer}
+.action-dialog .association-rule-groups{gap:0}
+.association-rule-choice{display:grid;grid-template-columns:minmax(140px,.8fr) minmax(0,1.5fr);gap:24px;padding:18px 0;min-width:0}
+.association-rule-choice+.association-rule-choice{border-top:1px solid var(--line)}
+.association-rule-title{min-width:0;overflow-wrap:anywhere}
+.association-rule-title h4{font-size:14px;font-weight:600;margin:0;line-height:1.7}
+.action-dialog .association-rule-choice .association-feature-options{gap:12px 16px;align-content:start}
+.action-dialog .association-rule-choice .association-feature label{margin:0;font-weight:400;font-size:13px}
+@media(max-width:760px){
+ .modal[data-slot=dialog-content]:has(.policy-association-form){width:calc(100vw - 24px)}
+ .association-rule-choice{grid-template-columns:1fr;gap:12px;padding:18px 0}
+ .action-dialog .association-rule-choice .association-feature-options{grid-template-columns:1fr}
+ .action-dialog .association-selection-summary{align-items:flex-start}
+}
+.policy-field-guide dl{margin:0}
+.policy-field-guide dl>div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;padding:16px 0}
+.policy-field-guide dl>div+div{border-top:1px solid var(--line)}
+.policy-field-guide dt{font-size:14px;font-weight:500}
+.policy-field-guide dd{margin:0;min-width:0;font-size:14px;line-height:1.8}
+.policy-field-guide dd p{margin:0 0 4px}.policy-field-guide small{color:var(--muted);font-size:12px}
+.policy-field-guide section{margin-top:24px}.policy-field-guide h3{font-size:15px}.policy-field-guide section p{font-size:13px;line-height:1.8;color:var(--muted)}
+@media(max-width:760px){.policy-field-guide dl>div{grid-template-columns:1fr;gap:8px}}
+
+/* Hotword preview keeps context and actions visible while only the terms scroll. */
+.resource-dialog-body.hotword-preview-body{display:flex;overflow:hidden;padding-bottom:4px}
+.hotword-preview{display:flex;flex-direction:column;gap:16px;min-height:0;min-width:0;width:100%}
+.hotword-preview-references{margin:0;font-size:13px;line-height:1.7;overflow-wrap:anywhere;flex-shrink:0}
+.hotword-preview-references>span{color:var(--muted)}
+.hotword-preview-toolbar{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.hotword-preview-toolbar>.search-box{flex:1;min-width:0;width:auto;margin:0}
+.hotword-preview-count{font-size:13px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hotword-preview-list{min-height:0;max-height:min(360px,40dvh);overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:6px}
+.hotword-preview-list:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.hotword-preview-list ol{list-style:none;margin:0;padding:0}
+.hotword-preview-list li{display:grid;grid-template-columns:48px minmax(0,1fr);font-size:14px;line-height:24px;min-height:36px}
+.hotword-preview-list li+li{border-top:1px solid var(--line)}
+.hotword-preview-list li>span{padding:6px 12px;overflow-wrap:anywhere}
+.hotword-preview-list .hotword-preview-number{background:var(--surface-subtle,#f8f8f8);border-right:1px solid var(--line);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;user-select:none}
+.hotword-preview-empty{margin:0;padding:32px 16px;text-align:center;font-size:14px;color:var(--muted)}
+@media(max-width:600px){
+ .hotword-preview-toolbar{flex-wrap:wrap;gap:8px}
+ .hotword-preview-toolbar>.search-box{flex-basis:100%}
+ .hotword-preview-list li{grid-template-columns:40px minmax(0,1fr)}
+ .hotword-preview-list li>span{padding:6px 10px}
+}
+
+/* Business resources share a compact, numbered reading and editing surface. */
+.resource-content-note{margin:0;font-size:13px;line-height:1.6;color:var(--muted)}
+.resource-record-scroll{min-height:0;max-height:min(360px,40dvh);overflow:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:6px}
+.resource-record-table{width:100%;border-collapse:separate;border-spacing:0;text-align:left;font-size:13px;line-height:1.6}
+.resource-record-table th,.resource-record-table td{padding:8px 12px;min-width:160px;vertical-align:top;white-space:normal;overflow-wrap:anywhere;border-bottom:1px solid var(--line)}
+.resource-record-table thead th{position:sticky;top:0;z-index:2;background:var(--surface-subtle,#f8f8f8);font-weight:500;white-space:nowrap}
+.resource-record-table tbody tr:last-child>*{border-bottom:0}
+.resource-record-table .resource-row-number{position:sticky;left:0;width:48px;min-width:48px;text-align:right;color:var(--muted);background:var(--surface-subtle,#f8f8f8);font-weight:400;font-variant-numeric:tabular-nums;user-select:none;z-index:1}
+.resource-record-table thead .resource-row-number{z-index:3}
+.resource-record-table .resource-row-action{width:80px;min-width:80px}
+.resource-grid-editor{display:flex;flex-direction:column;gap:10px;min-height:0;min-width:0}
+.resource-grid-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0}
+.resource-grid-editor>.resource-content-note{flex-shrink:0}
+.resource-edit-table td{min-width:200px}
+.resource-edit-table input,.resource-edit-table textarea{width:100%;min-width:160px;margin:0;font-size:13px}
+.resource-edit-table textarea{field-sizing:fixed;min-height:64px;max-height:160px;resize:vertical}
+.resource-edit-table input[type=file]{min-width:250px}
+.resource-edit-table small{display:block;margin-top:6px;color:var(--muted);overflow-wrap:anywhere}
+.resource-file-tools{flex-shrink:0;display:grid;gap:6px}
+.resource-file-tools>div{display:flex;align-items:center;gap:16px}
+.resource-file-tools a{font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.resource-dialog-body.resource-grid-edit-body{display:flex;flex-direction:column;overflow:hidden;gap:8px;padding-bottom:4px}
+.resource-grid-edit-body>.resource-fields{display:flex;flex-direction:column;gap:12px;min-height:0}
+.resource-grid-edit-body .resource-grid-scroll{max-height:min(360px,40dvh)}
+.legacy-resource-preview{max-height:40dvh;overflow:auto;overscroll-behavior:contain;margin-top:16px}
+.modal[data-slot=dialog-content].action-dialog:has(.resource-record-table){width:min(1080px,calc(100vw - 48px));max-width:1080px}
+@media(max-width:760px){.modal[data-slot=dialog-content].action-dialog:has(.resource-record-table){width:calc(100vw - 24px)}}
+
+.resource-record-table td{white-space:pre-wrap}
+.resource-grid-editor>.resource-file-tools{flex-shrink:0}
+
+.resource-required{display:inline-block;margin-right:4px;color:var(--danger,#b42318);font-weight:500}
+.resource-status-control{display:flex;align-items:center;gap:8px;min-height:36px;white-space:nowrap}
+.resource-edit-table td:has(.resource-status-control){min-width:120px;width:150px}
+
+/* Hotwords share the resource grid while fitting a single content column on narrow screens. */
+.hotword-grid-editor .resource-edit-table{table-layout:fixed}
+.hotword-grid-editor .resource-edit-table td:not(.resource-row-action){min-width:0}
+.hotword-grid-editor .resource-edit-table input{min-width:0}
+
+
+/* Policy form TXT refinement · 2026-09-26: compact rows, same field ownership. */
+.action-dialog .shared-policy-editor .policy-name-field {
+ display:grid;grid-template-columns:88px minmax(0,1fr);align-items:center;gap:12px;margin:0 0 22px;
+}
+.action-dialog .shared-policy-editor .policy-name-field>label{margin:0;font-weight:500}
+.policy-required{color:var(--red);margin-right:4px}
+.action-dialog .shared-policy-editor .configuration-fieldset{margin:0 0 22px}
+.action-dialog .shared-policy-editor .configuration-fieldset legend{margin:0 0 10px;font-size:14px}
+.action-dialog .shared-policy-editor .indicator-config-form{gap:12px 24px}
+.action-dialog .shared-policy-editor .config-field{
+ display:grid;grid-template-columns:88px minmax(0,1fr);align-items:start;gap:4px 12px;
+}
+.action-dialog .shared-policy-editor .config-field>label,
+.action-dialog .shared-policy-editor .config-field>span{padding-top:9px;font-size:13px;font-weight:400;line-height:1.6}
+.action-dialog .shared-policy-editor .config-field>small{grid-column:2;line-height:1.5;margin:0}
+.action-dialog .shared-policy-editor .config-field :is([data-slot=select-trigger],.number-unit){min-width:0;width:100%}
+.action-dialog .shared-policy-editor .config-checkboxes{min-height:40px;align-items:center;padding:6px 0;gap:10px 18px}
+.action-dialog .shared-policy-editor .config-checkboxes label{font-size:13px;font-weight:400}
+.action-dialog .shared-policy-editor :is(.config-field-middleStartSeconds,.config-field-middleEndSeconds){grid-column:1/-1;grid-template-columns:168px minmax(0,1fr)}
+.action-dialog .shared-policy-editor .new-policy-scope{margin:0;padding:0;border:0}
+.action-dialog .shared-policy-editor .policy-config-footer{padding-top:14px;border:0}
+@media(max-width:760px){
+ .action-dialog .shared-policy-editor .indicator-config-form{grid-template-columns:1fr}
+ .action-dialog .shared-policy-editor .config-field{grid-template-columns:112px minmax(0,1fr)}
+ .action-dialog .shared-policy-editor .policy-name-field{grid-template-columns:112px minmax(0,1fr)}
+}
+@media(max-width:480px){
+ .action-dialog .shared-policy-editor .config-field,
+ .action-dialog .shared-policy-editor .policy-name-field{grid-template-columns:minmax(0,1fr);gap:6px}
+ .action-dialog .shared-policy-editor .config-field>label,
+ .action-dialog .shared-policy-editor .config-field>span{padding-top:0}
+ .action-dialog .shared-policy-editor .config-field>small{grid-column:1}
+ .action-dialog .shared-policy-editor .config-checkboxes{gap:10px 16px}
+}
+
+/* Keep resource actions together; put field syntax next to the field it explains. */
+.resource-file-toolbar{justify-content:space-between;flex-wrap:wrap;gap:12px}
+.resource-file-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:12px}
+.resource-upload-action{display:inline-flex;align-items:center;gap:2px}
+.resource-hint[data-slot=button]{display:inline-flex;vertical-align:middle;width:24px;height:24px;min-height:24px;padding:4px;color:var(--muted)}
+.resource-record-table th .resource-hint{margin-left:4px}
+.resource-hint-content{z-index:150;max-width:min(320px,calc(100vw - 32px));white-space:normal;overflow-wrap:anywhere;line-height:1.7}
+@media(max-width:600px){.resource-file-actions{justify-content:flex-start;gap:8px}.resource-file-tools>.resource-file-toolbar{gap:8px}}
+
+
+/* Keyword editing: proportions follow the content, not the widest resource schema. */
+.modal[data-slot=dialog-content].action-dialog:has(.paired-text-grid-editor){width:min(880px,calc(100vw - 48px));max-width:880px}
+.paired-text-grid-editor{gap:12px}
+.paired-text-grid-editor .resource-file-tools{gap:4px}
+.paired-text-grid-editor .resource-grid-scroll{border:0;border-radius:0;max-height:min(480px,calc(100dvh - 290px))}
+.paired-text-grid-editor .resource-edit-table{table-layout:fixed}
+.keyword-number-col{width:44px}.keyword-term-col{width:30%}.keyword-action-col{width:64px}
+.paired-text-grid-editor .resource-edit-table :is(th,td){min-width:0;padding:8px;vertical-align:middle}
+.paired-text-grid-editor .resource-edit-table .resource-row-number{width:44px;min-width:0;text-align:center;background:var(--surface);font-size:12px}
+.paired-text-grid-editor .resource-edit-table thead th{background:var(--surface);height:36px;font-size:12px;font-weight:500}
+.paired-text-grid-editor .resource-edit-table thead th.resource-row-number{background:var(--surface)}
+.paired-text-grid-editor .resource-edit-table .resource-row-action{width:64px;min-width:0;text-align:right}
+.paired-text-grid-editor .resource-edit-table :is(input,textarea){min-width:0;min-height:36px;font-size:14px;box-shadow:none}
+.paired-text-grid-editor .resource-edit-table textarea{height:auto;field-sizing:content;min-height:36px;max-height:120px;resize:none;line-height:20px;padding:7px 10px;overflow-y:auto}
+.paired-text-grid-editor .resource-edit-table :is(input,textarea):focus-visible{box-shadow:0 0 0 3px var(--accent-soft);border-color:var(--orange)}
+.paired-text-grid-editor .resource-row-action button{padding-inline:8px;font-size:13px;font-weight:400;color:var(--muted)}
+.paired-text-grid-editor .resource-row-action button:hover{color:var(--red);background:var(--surface-subtle)}
+.keyword-mobile-label{display:none}
+@media(max-width:600px){
+ .modal[data-slot=dialog-content].action-dialog:has(.paired-text-grid-editor){width:calc(100vw - 24px)}
+ .paired-text-grid-editor .resource-file-toolbar{align-items:flex-start;gap:8px}
+ .paired-text-grid-editor .resource-file-actions{width:100%;justify-content:flex-start;gap:4px}
+ .paired-text-grid-editor .resource-grid-scroll{max-height:min(480px,calc(100dvh - 340px))}
+ .paired-text-grid-editor .resource-edit-table :is(colgroup,thead){display:none}
+ .paired-text-grid-editor .resource-edit-table tbody{display:block}
+ .paired-text-grid-editor .resource-edit-table tbody tr{display:grid;grid-template-columns:24px minmax(0,1fr) 48px;gap:8px;padding:12px 0}
+ .paired-text-grid-editor .resource-edit-table tbody :is(th,td){width:auto;padding:0;border:0;min-width:0;position:static}
+ .paired-text-grid-editor .resource-edit-table tbody .resource-row-number{width:auto;grid-column:1;grid-row:1;padding-top:27px}
+ .paired-text-grid-editor .resource-edit-table tbody td:nth-child(2){grid-column:2;grid-row:1}
+ .paired-text-grid-editor .resource-edit-table tbody td:nth-child(3){grid-column:2;grid-row:2}
+ .paired-text-grid-editor .resource-edit-table tbody .resource-row-action{width:auto;grid-column:3;grid-row:1;padding-top:22px}
+ .keyword-mobile-label{display:block;margin-bottom:4px;font-size:12px;color:var(--muted)}
+}
+
+/* Add rows from the persistent footer; file operations remain above the table. */
+.resource-add-row{margin-right:auto}
+.correction-term-col{width:calc((100% - 108px)/2)}
+.resource-grid-editor .resource-grid-scroll{border:0;border-radius:0}
+@media(max-width:600px){
+ .resource-dialog-footer>div:has(.resource-add-row){gap:8px}
+ .resource-dialog-footer .resource-add-row>button{padding-inline:10px}
+}
+
+/* Resource editor polish: a compact toolbar, aligned fields and quiet resting controls. */
+.resource-file-summary{display:grid;gap:4px;min-width:0}
+.resource-entry-count{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.resource-entry-count>b{font-size:14px;font-weight:600}
+.resource-entry-count>span{font-size:12px;font-weight:400;color:var(--muted)}
+.resource-file-tools>.resource-content-note,.resource-grid-summary>.resource-content-note{font-size:12px;line-height:1.6}
+.resource-grid-summary{display:grid;gap:4px}
+.resource-grid-editor .resource-file-actions{gap:8px}
+.resource-grid-editor .resource-file-actions>a{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--muted);white-space:nowrap}
+.resource-grid-editor .resource-file-actions>a:hover{color:var(--ink);background:var(--surface-subtle)}
+.resource-grid-editor .resource-file-actions>a:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.resource-grid-editor .resource-upload-action{gap:4px}
+.resource-grid-editor .resource-upload-action>button{height:32px;font-size:13px;font-weight:500;padding:6px 10px;box-shadow:none;border-color:var(--line);background:var(--surface)}
+.resource-grid-editor .resource-upload-action>button:hover{background:var(--surface-subtle)}
+.action-dialog:has(.paired-text-grid-editor)>header{padding-bottom:12px}
+.action-dialog:has(.paired-text-grid-editor) .resource-dialog-body{padding-top:0}
+.paired-text-grid-editor .resource-edit-table :is(input,textarea){border-color:var(--line);background:var(--surface)}
+.paired-text-grid-editor .resource-edit-table :is(input,textarea):hover{border-color:var(--line);background:var(--surface)}
+.paired-text-grid-editor .resource-edit-table :is(input,textarea):focus-visible{background:var(--surface);border-color:var(--orange)}
+.action-dialog:has(.paired-text-grid-editor) .resource-dialog-footer{padding-top:12px;padding-bottom:20px}
+@media(max-width:600px){
+ .resource-file-tools>.resource-file-toolbar{align-items:flex-start;gap:8px}
+ .resource-file-summary{width:100%}
+ .resource-grid-editor .resource-file-actions{justify-content:flex-start;gap:4px}
+ .resource-grid-editor .resource-file-actions>a{padding-left:0}
+}
+
+/* Warning associations: all outcomes first, shared parameters once. */
+.compact-warning-form .warning-dialog-body>.subtle{margin-bottom:16px;line-height:1.6}
+.compact-warning-form .binding-editor-row{display:grid;grid-template-columns:144px minmax(0,1fr);gap:16px;margin:0;padding:10px 0;border:0;border-radius:0;align-items:start}
+.compact-warning-form .binding-editor-row h3{font-size:14px;font-weight:500;line-height:36px;margin:0}
+.compact-warning-form .binding-editor-row h3 small{display:block;font-size:12px;color:var(--muted);line-height:1.5;font-weight:400}
+.binding-editor-controls{min-width:0}
+.compact-warning-form .binding-select-row{gap:6px;align-items:center}
+.compact-warning-form .binding-select-row>div{min-width:0}
+.compact-warning-form .binding-select-row>[data-slot=button]{height:32px;padding:4px 8px;font-size:13px;font-weight:400;color:var(--muted)}
+.compact-warning-form .binding-select-row [role=combobox]{min-height:36px;height:auto}
+.compact-warning-form .indicator-config-form:empty{display:none}
+.compact-warning-form .binding-config-label{margin:8px 0;font-size:12px;font-weight:400}
+.compact-warning-form .binding-editor-controls>.subtle{margin:4px 0 0;font-size:12px}
+.warning-shared-policies{margin-top:20px}
+.warning-shared-heading{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:12px}
+.warning-shared-heading h3,.warning-shared-policy h4{margin:0;font-size:14px;font-weight:600}
+.warning-shared-heading>span,.warning-shared-title>span{font-size:12px;color:var(--muted);line-height:1.6}
+.warning-shared-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px}
+.warning-shared-policy+.warning-shared-policy{margin-top:20px}
+.policy-compact-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;margin:10px 0 0;font-size:13px;line-height:1.7}
+.policy-compact-fields>div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px;min-width:0;align-items:baseline}
+.policy-compact-fields dt{color:var(--muted);font-weight:400}
+.policy-compact-fields dd{margin:0;overflow-wrap:anywhere;color:var(--ink)}
+.strategy-redesign .binding-read-compact .binding-read-row{padding:12px 16px;border:0}
+.strategy-redesign .binding-read-compact .binding-read-row+.binding-read-row{border:0}
+.binding-read-compact .warning-shared-policies{padding:0 16px}
+.compact-warning-form .warning-dialog-footer{padding-top:14px}
+@media(max-width:600px){
+ .compact-warning-form .binding-editor-row{grid-template-columns:1fr;gap:4px;padding:8px 0}
+ .compact-warning-form .binding-editor-row h3{line-height:1.6}
+ .compact-warning-form .binding-select-row{flex-wrap:nowrap}
+ .compact-warning-form .binding-select-row>div{flex-basis:auto}
+ .policy-compact-fields{grid-template-columns:1fr;gap:6px}
+ .binding-read-compact .warning-shared-policies{padding:0}
+}
+
+/* Policy explanations stay beside their labels without adding rows to the form. */
+.action-dialog .shared-policy-editor .config-field>.config-label-with-info{display:flex;align-items:center;gap:2px;padding-top:7px;white-space:nowrap}
+.action-dialog .shared-policy-editor .config-label-with-info>label{margin:0;font-size:13px;font-weight:400;line-height:1.6}
+.config-label-with-info .resource-hint{flex-shrink:0}
+@media(max-width:480px){.action-dialog .shared-policy-editor .config-field>.config-label-with-info{padding-top:0}}
+
+/* Correction pairs use a narrower, explicitly editable workspace. */
+.modal[data-slot=dialog-content].action-dialog:has(.correction-grid-editor){width:min(760px,calc(100vw - 48px));max-width:760px}
+.action-dialog:has(.correction-grid-editor)>header{padding:20px 24px 12px}
+.action-dialog:has(.correction-grid-editor) .resource-dialog-body{padding:0 24px 4px}
+.action-dialog:has(.correction-grid-editor) .resource-dialog-footer{padding:14px 24px 20px}
+.correction-grid-editor .resource-edit-table tbody td:nth-child(2){position:relative;padding-right:24px}
+.correction-grid-editor .resource-edit-table :is(th,td):nth-child(3){padding-left:24px}
+.correction-direction{position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;text-align:center;color:var(--muted);font-size:16px;line-height:24px;pointer-events:none}
+.correction-grid-editor .resource-edit-table input{background:var(--surface);border-color:var(--line);font-weight:400}
+.correction-grid-editor .resource-edit-table input:hover{border-color:var(--muted)}
+.correction-grid-editor .resource-edit-table input:focus-visible{border-color:var(--orange);box-shadow:0 0 0 3px var(--accent-soft)}
+@media(max-width:600px){
+ .modal[data-slot=dialog-content].action-dialog:has(.correction-grid-editor){width:calc(100vw - 24px)}
+ .action-dialog:has(.correction-grid-editor)>header{padding:20px 20px 12px}
+ .action-dialog:has(.correction-grid-editor) .resource-dialog-body{padding-inline:20px}
+ .action-dialog:has(.correction-grid-editor) .resource-dialog-footer{padding-inline:20px}
+ .correction-grid-editor .resource-edit-table tbody td:nth-child(2),.correction-grid-editor .resource-edit-table tbody td:nth-child(3){padding:0}
+ .correction-direction{display:none}
+}
+
+/* Editable resource rows are grouped by spacing, without table dividers. */
+.resource-grid-editor .resource-edit-table :is(th,td){border:0}
+.resource-grid-editor .resource-edit-table tbody tr+tr{border:0}
+
+/* Read-only associations share the resource list's light visual hierarchy. */
+.strategy-redesign .binding-read-compact .binding-read-head{background:transparent;border:0;border-radius:0;padding-block:4px 10px;color:var(--muted);font-size:12px;font-weight:500}
+.strategy-redesign .binding-read-compact .binding-read-row{padding-block:12px;line-height:1.6}
+.strategy-redesign .binding-read-compact .binding-feature{gap:4px}
+.strategy-redesign .binding-read-compact .binding-feature>strong{font-weight:500}
+.strategy-redesign .binding-read-compact .binding-policy :is(strong,p){font-weight:400}
+@media(max-width:760px){
+ .strategy-redesign .binding-read-compact .binding-read-row{padding-inline:0;gap:8px}
+}
+
+/* Shared policy details: one configuration entry and a balanced fixed action row. */
+.policy-section-title .policy-title-with-info{display:flex;align-items:center;gap:4px}
+.action-dialog .shared-policy-editor .policy-config-footer>.policy-footer-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;width:100%;min-width:0}
+.action-dialog .shared-policy-editor .policy-footer-row>.policy-save-impact{flex:1;min-width:0;margin:0;font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+.policy-footer-buttons{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-shrink:0}
+@media(max-width:600px){
+ .action-dialog .shared-policy-editor .policy-config-footer>.policy-footer-row{flex-direction:column;align-items:stretch;gap:12px}
+ .policy-footer-buttons{align-self:flex-end}
+}
+
+/* Resource controls stay white; dialog table hierarchy is defined below. */
+.resource-grid-editor .resource-edit-table thead th,
+.resource-grid-editor .resource-edit-table thead th.resource-row-number,
+.resource-grid-editor .resource-edit-table tbody .resource-row-number{background:var(--surface);color:var(--muted)}
+.resource-grid-editor .resource-edit-table :is(input,textarea){background:var(--surface);border-color:var(--line)}
+.resource-grid-editor .resource-edit-table :is(input,textarea):focus-visible{border-color:var(--orange);box-shadow:0 0 0 3px var(--accent-soft)}
+.hotword-preview .hotword-preview-list{border:0;border-radius:0}
+.hotword-preview .resource-record-table :is(th,td){border:0;padding-block:10px}
+.hotword-preview .resource-record-table thead th,
+.hotword-preview .resource-record-table .resource-row-number{background:var(--surface);color:var(--muted)}
+.hotword-preview .resource-record-table td{color:var(--ink)}
+.hotword-preview .hotword-preview-list li+li{border:0}
+.hotword-preview .hotword-preview-number{background:var(--surface);border:0}
+.hotword-preview-toolbar{justify-content:space-between}
+.hotword-preview-toolbar>.search-box{max-width:360px}
+.modal[data-slot=dialog-content].action-dialog:has(.resource-read-pair){width:min(880px,calc(100vw - 48px));max-width:880px}
+.modal[data-slot=dialog-content].action-dialog:has(.correction-resource-preview){width:min(760px,calc(100vw - 48px));max-width:760px}
+.resource-read-pair .resource-record-table{table-layout:fixed}
+.resource-read-pair .resource-record-table :is(th,td){min-width:0;padding-inline:8px}
+.resource-read-pair .resource-record-table .resource-row-number{width:44px;min-width:0;text-align:center;font-size:12px}
+.resource-preview-label{display:none}
+@media(max-width:600px){
+ .modal[data-slot=dialog-content].action-dialog:has(.resource-read-pair){width:calc(100vw - 24px)}
+ .hotword-preview-toolbar>.search-box{max-width:none}
+ .resource-read-pair .resource-record-table :is(colgroup,thead){display:none}
+ .resource-read-pair .resource-record-table tbody{display:block}
+ .resource-read-pair .resource-record-table tbody tr{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;padding:12px 0}
+ .resource-read-pair .resource-record-table tbody :is(th,td){padding:0;position:static}
+ .resource-read-pair .resource-record-table tbody .resource-row-number{width:auto;grid-column:1;grid-row:1/3;padding-top:22px}
+ .resource-read-pair .resource-record-table tbody td{grid-column:2}
+ .resource-preview-label{display:block;margin-bottom:4px;font-size:12px;color:var(--muted)}
+}
+
+/* Keep the policy name focus ring inside the scroll area; separate associations with space. */
+.action-dialog :is(.shared-policy-editor,.policy-association-form) .action-form-body{padding-top:8px;scroll-padding-top:8px}
+.action-dialog .shared-policy-editor .association-rule-choice+.association-rule-choice{border-top:0}
+
+/* Preserve the compact single-column preview after adopting the shared table. */
+.modal[data-slot=dialog-content].action-dialog:has(.hotword-resource-preview){width:min(680px,calc(100vw - 48px));max-width:680px}
+@media(max-width:760px){.modal[data-slot=dialog-content].action-dialog:has(.hotword-resource-preview){width:calc(100vw - 24px)}}
+
+/* Dialog footer notes use one subdued color and align with the button bottom edge. */
+:root{--dialog-footer-note:#999}
+.modal .dialog-footer-row{display:flex;align-items:flex-end;justify-content:flex-end;gap:12px;width:100%;min-width:0}
+.modal .dialog-footer-row>.dialog-footer-note{flex:1;min-width:0;margin:0 auto 0 0;color:var(--dialog-footer-note);font-size:12px;font-weight:400;line-height:1.7;overflow-wrap:anywhere}
+.modal .dialog-footer-buttons{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-shrink:0}
+@media(max-width:600px){
+ .modal .dialog-footer-row{flex-wrap:wrap}
+ .modal .dialog-footer-row>.dialog-footer-note{flex-basis:100%}
+ .modal .dialog-footer-buttons{margin-left:auto}
+}
+
+/* Voice registration: one truthful filename and one aligned selection action. */
+.resource-edit-table thead th{vertical-align:middle}
+.resource-column-label{display:inline-flex;align-items:center;min-height:24px;gap:4px}
+.resource-column-label .resource-required{margin-right:0}
+.resource-column-label .resource-hint{margin-left:0}
+.voice-grid-editor .resource-edit-table{table-layout:fixed;min-width:680px}
+.voice-grid-editor .resource-edit-table :is(th,td){min-width:0;padding:8px;vertical-align:middle}
+.voice-grid-editor .resource-edit-table tbody input:not([type=file]){min-width:0;height:36px}
+.voice-grid-editor .resource-edit-table tbody td:nth-child(2)>input{width:calc(100% - 24px);max-width:180px}
+.voice-grid-editor .resource-edit-table .resource-row-number{width:44px;min-width:0;text-align:center}
+.voice-grid-editor .resource-edit-table .resource-row-action{width:64px;min-width:0;text-align:center}
+.voice-grid-editor .resource-row-action button{height:36px;padding-inline:8px;font-size:13px;font-weight:400}
+.voice-grid-editor .resource-edit-table td:has(.resource-status-control){width:auto;min-width:0}
+.resource-audio-field{display:flex;align-items:center;gap:10px;min-width:0;min-height:36px}
+.resource-audio-field>button{flex-shrink:0;height:36px;padding-inline:12px;font-size:13px;font-weight:500}
+.resource-audio-name{display:flex;flex:1;min-width:0;max-width:300px;overflow:hidden;white-space:nowrap;font-size:13px;color:var(--ink)}
+.resource-audio-stem{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resource-audio-extension{flex-shrink:0}
+.resource-audio-name.is-empty{color:var(--muted)}
+.resource-audio-field>input[type=file][hidden]{display:none}
+
+/* Association forms share compact rule / indicator / result columns. */
+.action-dialog .policy-scope-fields{--association-columns:160px 88px minmax(0,1fr)}
+.action-dialog .policy-scope-fields :is(.association-columns,.association-rule-choice){display:grid;grid-template-columns:var(--association-columns);column-gap:16px;align-items:start}
+.action-dialog .policy-scope-fields .association-columns{padding:12px 0 8px;font-size:12px;line-height:24px;color:var(--muted);font-weight:400}
+.action-dialog .policy-scope-fields .association-rule-choice{padding:12px 0;border:0;row-gap:8px}
+.action-dialog .policy-scope-fields .association-rule-title h4{font-size:13px;line-height:24px;font-weight:500}
+.action-dialog .policy-scope-fields .association-indicator{min-width:0;font-size:12px;line-height:24px;color:var(--muted);overflow-wrap:anywhere}
+.action-dialog .policy-scope-fields .association-feature-options{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 20px;min-width:0}
+.action-dialog .policy-scope-fields .association-feature{flex:0 1 auto;max-width:100%;align-items:flex-start;gap:8px;min-height:24px}
+.action-dialog .policy-scope-fields .association-feature>[data-slot=checkbox]{margin-top:4px}
+.action-dialog .policy-scope-fields .association-feature label{line-height:24px;margin:0}
+.action-dialog .policy-scope-fields .association-feature label>span{font-weight:400}
+.action-dialog .policy-scope-fields .association-feature>.resource-hint{flex-shrink:0;margin-left:-4px}
+@media(max-width:760px){
+ .action-dialog .policy-scope-fields{--association-columns:136px 72px minmax(0,1fr)}
+}
+@media(max-width:600px){
+ .action-dialog .policy-scope-fields .association-columns{display:none}
+ .action-dialog .policy-scope-fields .association-rule-choice{grid-template-columns:minmax(0,1fr) auto;padding:14px 0}
+ .action-dialog .policy-scope-fields .association-feature-options{grid-column:1/-1}
+}
+
+/* Association picker hierarchy: compact filters, quiet counts, anchored column headings. */
+.action-dialog .new-policy-scope>h3{display:flex;align-items:center;gap:8px;margin:0 0 14px;font-size:14px;line-height:24px}
+.action-dialog .new-policy-scope>h3>span{margin:0;font-size:12px;font-weight:400}
+.action-dialog .policy-scope-fields .policy-scope-filters{grid-template-columns:220px minmax(0,1fr);align-items:center;gap:12px}
+.action-dialog .policy-scope-fields .policy-scope-filters>label{display:block;margin:0}
+.action-dialog .policy-scope-fields .policy-scope-filters [data-slot=select-trigger]{margin:0;width:100%;min-width:0}
+.action-dialog .policy-scope-fields .association-selection-summary{margin:12px 0 10px;padding:0;min-height:28px;background:transparent;border-radius:0;gap:8px}
+.association-selection-count{display:flex;align-items:center;gap:2px;min-width:0;color:var(--muted);font-size:12px;line-height:24px}
+.association-selection-count b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.action-dialog .policy-scope-fields .association-selected-filter{color:var(--muted);font-weight:400}
+.action-dialog .policy-scope-fields .association-columns{position:sticky;top:0;z-index:2;padding:8px 12px;background:var(--surface-subtle);border-radius:6px;font-weight:500}
+.action-dialog .policy-scope-fields .association-rule-choice{padding:10px 12px;min-height:44px;border-radius:4px}
+.action-dialog .policy-scope-fields .association-rule-choice:hover,
+.action-dialog .policy-scope-fields .association-rule-choice:focus-within{background:var(--surface-subtle)}
+@media(max-width:600px){
+ .action-dialog .policy-scope-fields .policy-scope-filters{grid-template-columns:minmax(0,1fr);gap:10px}
+ .action-dialog .policy-scope-fields .association-selection-summary{align-items:center}
+ .action-dialog .policy-scope-fields .association-rule-choice{padding:12px 0}
+}
+
+/* Shared policy cards keep reference counts beside the strategy name. */
+.strategy-redesign .shared-policy-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-width:0;margin-bottom:10px}
+.strategy-redesign .shared-policy-card-heading>strong{min-width:0;font-size:14px;line-height:1.65;font-weight:600;color:var(--ink);overflow-wrap:anywhere}
+.strategy-redesign .policy-item.selected .shared-policy-card-heading>strong{color:var(--accent-ink)}
+.strategy-redesign .shared-policy-card-count{flex-shrink:0;margin-top:2px;padding:2px 6px;border:0;border-radius:4px;background:rgba(0,0,0,.04);color:var(--muted);font-size:11px;font-weight:400;line-height:1.65;white-space:nowrap}
+
+/* SOP: stable rule identity, horizontal steps, quiet per-step controls. */
+.modal[data-slot=dialog-content].action-dialog:has(.sop-resource-form){width:min(1200px,calc(100vw - 48px));max-width:1200px}
+.sop-matrix-viewport{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
+.sop-resource-form .sop-matrix-scroll,.sop-grid-editor .sop-matrix-scroll{max-height:min(520px,calc(100dvh - 340px));border:0;border-radius:6px;overflow:auto;overscroll-behavior:contain;scroll-padding-left:232px}
+.sop-matrix-scroll:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.resource-record-table.sop-matrix-table{table-layout:fixed;width:100%}
+.resource-record-table.sop-matrix-table :is(th,td){min-width:0;padding:20px 14px;vertical-align:top}
+.resource-record-table.sop-matrix-table thead th{padding-block:12px}
+.resource-record-table.sop-matrix-table .sop-matrix-name{position:sticky;left:40px;z-index:1;background:var(--surface);font-weight:500;box-shadow:8px 0 10px -12px rgba(0,0,0,.4)}
+.resource-record-table.sop-matrix-table thead .sop-matrix-name{z-index:3;background:var(--surface-subtle,#f8f8f8)}
+.resource-record-table.sop-matrix-table .resource-row-number{width:40px;min-width:40px;text-align:center;background:var(--surface);padding-inline:8px}
+.sop-matrix-identity{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sop-matrix-title{color:var(--ink);font-size:14px;font-weight:600;line-height:1.65}
+.sop-matrix-meta{font-size:12px;font-weight:400;color:var(--muted);white-space:nowrap}
+.sop-matrix-step{display:flex;flex-direction:column;align-items:flex-start;gap:12px;height:100%}
+.sop-matrix-step p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.75}
+.sop-matrix-required{display:inline-flex;align-items:center;gap:5px;padding:2px 7px;background:var(--surface-subtle);border-radius:4px;font-size:11px;line-height:18px;color:var(--ink)}
+.sop-matrix-required::before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
+.sop-matrix-required.is-optional{color:var(--muted);background:transparent;padding-left:0}
+.sop-matrix-required.is-optional::before{background:transparent;border:1px solid currentColor}
+.sop-matrix-empty{font-size:13px;color:var(--muted)}
+.sop-matrix-step-options{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%}
+.sop-matrix-step-options label{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);cursor:pointer}
+.sop-matrix-actions{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:4px}
+.sop-matrix-actions .sop-add-step{padding:0;height:28px;font-size:12px;gap:4px}
+.sop-matrix-table :is(.sop-delete-step,.sop-delete-rule){color:var(--muted)}
+.sop-matrix-table :is(.sop-delete-step,.sop-delete-rule):hover{color:var(--red)}
+.sop-matrix-table textarea{min-height:92px;resize:vertical;line-height:1.7;scroll-margin-left:246px}
+.sop-matrix-table :is(input,textarea){width:100%;min-width:0;font-size:13px}
+.sop-scroll-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;flex-shrink:0;padding-block:4px}
+.sop-scroll-controls>div{display:flex;gap:6px}
+@media(max-width:760px){
+ .modal[data-slot=dialog-content].action-dialog:has(.sop-resource-form){width:calc(100vw - 24px)}
+ .sop-resource-form .sop-matrix-scroll,.sop-grid-editor .sop-matrix-scroll{max-height:calc(100dvh - 380px);min-height:100px}
+}
+
+/* Resource content and detection parameters share the original editing surface. */
+.action-dialog .resource-dialog-body.resource6003-body{display:block;overflow:auto;padding-bottom:24px}
+.resource6003-body>.structured-resource-editor,.resource6003-body>.hotword-preview{margin-top:18px;margin-bottom:16px;flex:none}
+.resource6003-body .config-conditions{margin-top:28px}
+.resource6003-body .config-conditions>h3{font-size:15px;margin-bottom:20px}
+.resource6003-body .config-conditions fieldset{padding:0;margin:0 0 24px;border:0}
+.resource6003-body .config-conditions legend{font-size:14px;font-weight:600;margin-bottom:14px}
+.resource6003-body>label{display:grid;gap:8px;font-size:13px}
+
+/* 6003 local refinements: same shell and control system as the 6001 baseline. */
+.modal[data-slot=dialog-content].action-dialog:has(>.resource6003-form),
+.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor){height:min(760px,calc(100dvh - 48px));max-height:calc(100dvh - 48px)}
+.resource6003-form,.policy6003-editor{flex:1;min-height:0}
+.resource6003-form .resource-dialog-body,.policy6003-editor .action-form-body{flex:1;min-height:0}
+.resource6003-form .resource-dialog-footer,.policy6003-editor .policy-config-footer{flex-shrink:0}
+.resource6003-body .professional-resource-toolbar{display:grid;gap:16px;margin:4px 0 24px}
+.resource6003-body .professional-resource-toolbar>.search-box{max-width:400px;width:100%}
+.resource6003-body .resource-part-heading{margin:0;font-size:15px;font-weight:600}
+.resource6003-body .professional-resource-section{margin-top:32px}
+.resource6003-body .professional-resource-section>.resource-part-heading{margin-bottom:16px}
+.resource6003-body .resource-condition-fields{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px}
+.resource6003-body .config-conditions>h3{display:flex;align-items:center;gap:6px}
+.resource6003-body .config-conditions fieldset{margin-bottom:24px}
+.policy6003-editor .policy-form{gap:24px}
+.policy6003-editor .policy-form>.configuration-fieldset{margin:0}
+.policy6003-editor .indicator-config-form{margin:6px 0 16px;gap:16px 24px}
+.policy6003-editor .policy6003-flow-field{grid-column:1/-1}
+.policy6003-recipients>span{font-size:13px}
+.policy6003-recipients>div{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:4px}
+.policy6003-recipients .config-choice{padding:8px 0;font-size:13px;font-weight:400}
+.policy6003-selection-count{font-size:12px;font-weight:400;color:var(--muted);margin-left:8px}
+.policy6003-rule-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
+.policy6003-rule-option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:400;cursor:pointer}
+.policy6003-rule-option>span{display:grid;gap:4px;min-width:0}
+.policy6003-rule-option strong{font-weight:500;line-height:20px}
+.policy6003-rule-option small{font-size:11px;color:var(--muted);line-height:1.6}
+.policy6003-rule-option [data-slot=checkbox]{margin-top:2px;flex-shrink:0}
+.policy6003-rule-option:has([data-state=checked]){background:var(--selection-bg)}
+.policy6003-rule-option:not(.is-unavailable):hover{background:var(--surface-hover,var(--surface-subtle))}
+.policy6003-rule-option:has([data-state=checked]):hover{background:var(--selection-hover,var(--selection-bg))}
+.policy6003-rule-option:has(:focus-visible){background:var(--control-focus,#e4e4e4)}
+.policy6003-rule-option.is-unavailable{cursor:default;color:var(--muted)}
+.policy6003-footer-secondary{margin-right:auto}
+@media(max-width:760px){
+ .resource6003-body .resource-condition-fields{grid-template-columns:1fr}
+ .policy6003-rule-options{grid-template-columns:1fr}
+ .policy6003-editor .policy-form{gap:20px}
+ .modal[data-slot=dialog-content].action-dialog:has(>.resource6003-form),.modal[data-slot=dialog-content].action-dialog:has(>.policy6003-editor){height:calc(100dvh - 24px);max-height:calc(100dvh - 24px)}
+}
